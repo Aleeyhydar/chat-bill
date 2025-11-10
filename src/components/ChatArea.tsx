@@ -49,10 +49,25 @@ const ChatArea = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-chat-bg">
+    <div className="flex flex-col h-screen bg-chat-bg relative overflow-hidden">
+      {messages.length === 0 && (
+        <>
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Gradient Orbs */}
+            <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse delay-1000" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse delay-500" />
+            
+            {/* Grid Pattern */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
+          </div>
+        </>
+      )}
+      
       {messages.length === 0 ? (
         /* Welcome Screen - ChatGPT Style */
-        <div className="flex-1 flex flex-col items-center justify-center px-4">
+        <div className="flex-1 flex flex-col items-center justify-center px-4 relative z-10">
           <div className="w-full max-w-3xl space-y-8">
             <div className="text-center space-y-4 mb-12">
               <Sparkles className="h-16 w-16 text-primary mx-auto mb-6" />

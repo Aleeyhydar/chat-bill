@@ -1,4 +1,4 @@
-import { Search, FileText, Plus, Menu, X } from "lucide-react";
+import { Search, FileText, Plus, Menu, X, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -62,9 +62,9 @@ const InvoiceSidebar = ({ isOpen, onToggle }: InvoiceSidebarProps) => {
             variant="ghost"
             size="icon"
             onClick={onToggle}
-            className="lg:hidden hover:bg-sidebar-hover"
+            className="hover:bg-sidebar-hover"
           >
-            <X className="h-5 w-5" />
+            <ChevronLeft className="h-5 w-5" />
           </Button>
         </div>
 

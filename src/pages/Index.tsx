@@ -14,18 +14,20 @@ const Index = () => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Mobile Header */}
-        <header className="lg:hidden flex items-center justify-between p-4 border-b border-border bg-background">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setSidebarOpen(true)}
-            className="hover:bg-muted"
-          >
-            <Menu className="h-5 w-5" />
-          </Button>
-          <h1 className="text-lg font-semibold text-foreground">InvoiceAI</h1>
-          <div className="w-10" /> {/* Spacer for centering */}
+        {/* Header */}
+        <header className="flex items-center justify-between p-4 border-b border-border bg-background">
+          {!sidebarOpen && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setSidebarOpen(true)}
+              className="hover:bg-muted"
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+          )}
+          <h1 className="text-lg font-semibold text-foreground lg:hidden">InvoiceAI</h1>
+          {!sidebarOpen && <div className="w-10 lg:hidden" />}
         </header>
 
         {/* Chat Area */}
