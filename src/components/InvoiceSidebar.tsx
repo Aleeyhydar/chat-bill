@@ -49,7 +49,7 @@ const InvoiceSidebar = ({ isOpen, onToggle }: InvoiceSidebarProps) => {
           bg-sidebar border-r border-sidebar-border
           flex flex-col z-50
           transition-all duration-300 ease-in-out
-          ${isOpen ? "translate-x-0 w-72" : "-translate-x-full lg:translate-x-0 w-0 lg:w-72"}
+          ${isOpen ? "translate-x-0 w-72" : "-translate-x-full w-0"}
         `}
       >
         {/* Header */}
