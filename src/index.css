@@ -9,95 +9,95 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 9% 20%;
+    --foreground: 240 10% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 9% 20%;
+    --card-foreground: 240 10% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 9% 20%;
+    --popover-foreground: 240 10% 15%;
 
-    --primary: 180 75% 42%;
+    --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 9% 20%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 15%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
 
-    --accent: 180 75% 42%;
+    --accent: 262 83% 58%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 180 75% 42%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 262 83% 58%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 220 18% 98%;
-    --sidebar-foreground: 220 9% 30%;
-    --sidebar-primary: 180 75% 42%;
+    --sidebar-background: 240 10% 98%;
+    --sidebar-foreground: 240 10% 25%;
+    --sidebar-primary: 262 83% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 95%;
-    --sidebar-accent-foreground: 220 9% 20%;
-    --sidebar-border: 220 13% 92%;
-    --sidebar-ring: 180 75% 42%;
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 240 10% 15%;
+    --sidebar-border: 240 6% 92%;
+    --sidebar-ring: 262 83% 58%;
 
     /* Custom semantic tokens */
     --chat-bg: 0 0% 100%;
-    --chat-bubble: 220 14% 96%;
-    --chat-bubble-foreground: 220 9% 20%;
-    --sidebar-hover: 220 14% 94%;
+    --chat-bubble: 240 5% 96%;
+    --chat-bubble-foreground: 240 10% 15%;
+    --sidebar-hover: 240 5% 94%;
     --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 220 18% 12%;
-    --foreground: 220 9% 92%;
+    --background: 240 10% 10%;
+    --foreground: 240 5% 92%;
 
-    --card: 220 18% 15%;
-    --card-foreground: 220 9% 92%;
+    --card: 240 10% 13%;
+    --card-foreground: 240 5% 92%;
 
-    --popover: 220 18% 15%;
-    --popover-foreground: 220 9% 92%;
+    --popover: 240 10% 13%;
+    --popover-foreground: 240 5% 92%;
 
-    --primary: 180 75% 48%;
+    --primary: 262 83% 62%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 18% 18%;
-    --secondary-foreground: 220 9% 92%;
+    --secondary: 240 10% 16%;
+    --secondary-foreground: 240 5% 92%;
 
-    --muted: 220 18% 18%;
-    --muted-foreground: 220 9% 65%;
+    --muted: 240 10% 16%;
+    --muted-foreground: 240 4% 65%;
 
-    --accent: 180 75% 48%;
+    --accent: 262 83% 62%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 18% 22%;
-    --input: 220 18% 22%;
-    --ring: 180 75% 48%;
+    --border: 240 10% 20%;
+    --input: 240 10% 20%;
+    --ring: 262 83% 62%;
 
-    --sidebar-background: 220 18% 10%;
-    --sidebar-foreground: 220 9% 85%;
-    --sidebar-primary: 180 75% 48%;
+    --sidebar-background: 240 10% 8%;
+    --sidebar-foreground: 240 5% 85%;
+    --sidebar-primary: 262 83% 62%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 18% 16%;
-    --sidebar-accent-foreground: 220 9% 92%;
-    --sidebar-border: 220 18% 18%;
-    --sidebar-ring: 180 75% 48%;
+    --sidebar-accent: 240 10% 14%;
+    --sidebar-accent-foreground: 240 5% 92%;
+    --sidebar-border: 240 10% 16%;
+    --sidebar-ring: 262 83% 62%;
 
     /* Custom semantic tokens - dark mode */
-    --chat-bg: 220 18% 12%;
-    --chat-bubble: 220 18% 18%;
-    --chat-bubble-foreground: 220 9% 92%;
-    --sidebar-hover: 220 18% 14%;
+    --chat-bg: 240 10% 10%;
+    --chat-bubble: 240 10% 16%;
+    --chat-bubble-foreground: 240 5% 92%;
+    --sidebar-hover: 240 10% 12%;
   }
 }
 
