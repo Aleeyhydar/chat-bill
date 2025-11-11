@@ -1,8 +1,16 @@
-import { Search, FileText, Plus, Menu, X, ChevronLeft } from "lucide-react";
+import { Search, FileText, Plus, Menu, X, ChevronLeft, User, CreditCard, Settings, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { useState } from "react";
 
 interface Invoice {
@@ -119,18 +127,43 @@ const InvoiceSidebar = ({ isOpen, onToggle }: InvoiceSidebarProps) => {
 
         {/* User Profile */}
         <div className="p-4 border-t border-sidebar-border">
-          <div className="flex items-center gap-3">
-            <Avatar className="h-10 w-10 border-2 border-primary/20">
-              <AvatarImage src="" alt="User" />
-              <AvatarFallback className="bg-primary/10 text-primary font-semibold">
-                JD
-              </AvatarFallback>
-            </Avatar>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-sidebar-foreground truncate">John Doe</p>
-              <p className="text-xs text-muted-foreground">Currency: NGN (₦)</p>
-            </div>
-          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="flex items-center gap-3 w-full hover:bg-sidebar-hover p-2 rounded-lg transition-colors">
+                <Avatar className="h-10 w-10 border-2 border-primary/20">
+                  <AvatarImage src="" alt="User" />
+                  <AvatarFallback className="bg-primary/10 text-primary font-semibold">
+                    JD
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex-1 min-w-0 text-left">
+                  <p className="text-sm font-medium text-sidebar-foreground truncate">John Doe</p>
+                  <p className="text-xs text-muted-foreground">Currency: NGN (₦)</p>
+                </div>
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <User className="mr-2 h-4 w-4" />
+                <span>Edit Profile</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <CreditCard className="mr-2 h-4 w-4" />
+                <span>View Plans</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Settings className="mr-2 h-4 w-4" />
+                <span>Settings</span>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="text-destructive">
+                <LogOut className="mr-2 h-4 w-4" />
+                <span>Log Out</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </aside>
     </>
