@@ -96,26 +96,7 @@ const ChatArea = () => {
               </p>
             </div>
 
-            {/* Feature Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 hover:bg-card/70 transition-all duration-300 hover:scale-105">
-                <Zap className="h-8 w-8 text-primary mb-2" />
-                <h3 className="font-semibold text-foreground mb-1">Lightning Fast</h3>
-                <p className="text-sm text-muted-foreground">Generate invoices in seconds with AI</p>
-              </div>
-              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 hover:bg-card/70 transition-all duration-300 hover:scale-105">
-                <FileText className="h-8 w-8 text-accent mb-2" />
-                <h3 className="font-semibold text-foreground mb-1">Professional</h3>
-                <p className="text-sm text-muted-foreground">Beautiful, ready-to-send formats</p>
-              </div>
-              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 hover:bg-card/70 transition-all duration-300 hover:scale-105">
-                <Clock className="h-8 w-8 text-primary mb-2" />
-                <h3 className="font-semibold text-foreground mb-1">Smart Tracking</h3>
-                <p className="text-sm text-muted-foreground">Keep track of all your invoices</p>
-              </div>
-            </div>
-
-            <form onSubmit={handleSubmit} className="relative">
+            <form onSubmit={handleSubmit} className="relative mb-8">
               <Textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -132,9 +113,28 @@ const ChatArea = () => {
                 <Send className="h-4 w-4" />
               </Button>
             </form>
-            <p className="text-xs text-muted-foreground text-center">
+            <p className="text-xs text-muted-foreground text-center mb-8">
               Press Enter to send, Shift + Enter for new line
             </p>
+
+            {/* Feature Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 hover:bg-card/70 transition-all duration-300 hover:scale-105">
+                <Zap className="h-8 w-8 text-primary mb-2" />
+                <h3 className="font-semibold text-foreground mb-1">Lightning Fast</h3>
+                <p className="text-sm text-muted-foreground">Generate invoices in seconds with AI</p>
+              </div>
+              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 hover:bg-card/70 transition-all duration-300 hover:scale-105">
+                <FileText className="h-8 w-8 text-accent mb-2" />
+                <h3 className="font-semibold text-foreground mb-1">Professional</h3>
+                <p className="text-sm text-muted-foreground">Beautiful, ready-to-send formats</p>
+              </div>
+              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 hover:bg-card/70 transition-all duration-300 hover:scale-105">
+                <Clock className="h-8 w-8 text-primary mb-2" />
+                <h3 className="font-semibold text-foreground mb-1">Smart Tracking</h3>
+                <p className="text-sm text-muted-foreground">Keep track of all your invoices</p>
+              </div>
+            </div>
           </div>
         </div>
       ) : (
