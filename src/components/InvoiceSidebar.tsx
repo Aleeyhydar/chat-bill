@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Invoice {
   id: string;
@@ -26,6 +27,7 @@ interface InvoiceSidebarProps {
 }
 
 const InvoiceSidebar = ({ isOpen, onToggle }: InvoiceSidebarProps) => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
   // Mock invoice history
@@ -145,20 +147,20 @@ const InvoiceSidebar = ({ isOpen, onToggle }: InvoiceSidebarProps) => {
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => navigate("/edit-profile")}>
                 <User className="mr-2 h-4 w-4" />
                 <span>Edit Profile</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => navigate("/plans")}>
                 <CreditCard className="mr-2 h-4 w-4" />
                 <span>View Plans</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => navigate("/settings")}>
                 <Settings className="mr-2 h-4 w-4" />
                 <span>Settings</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-destructive">
+              <DropdownMenuItem className="text-destructive" onClick={() => navigate("/signin")}>
                 <LogOut className="mr-2 h-4 w-4" />
                 <span>Log Out</span>
               </DropdownMenuItem>

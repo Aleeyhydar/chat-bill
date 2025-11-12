@@ -1,0 +1,303 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft, Upload, Check, FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { toast } from "sonner";
+
+const invoiceTemplates = [
+  { id: 1, name: "Modern Minimal", preview: "Clean lines, spacious layout with accent colors" },
+  { id: 2, name: "Professional Classic", preview: "Traditional business format with structured sections" },
+  { id: 3, name: "Bold & Colorful", preview: "Vibrant design with eye-catching headers" },
+  { id: 4, name: "Elegant Corporate", preview: "Sophisticated style with refined typography" },
+  { id: 5, name: "Creative Studio", preview: "Artistic layout with unique visual elements" },
+];
+
+const colorCombinations = [
+  { id: 1, name: "Purple Passion", primary: "#8B5CF6", secondary: "#6366F1" },
+  { id: 2, name: "Ocean Blue", primary: "#0EA5E9", secondary: "#06B6D4" },
+  { id: 3, name: "Forest Green", primary: "#10B981", secondary: "#059669" },
+  { id: 4, name: "Sunset Orange", primary: "#F59E0B", secondary: "#EF4444" },
+  { id: 5, name: "Royal Purple", primary: "#7C3AED", secondary: "#A855F7" },
+  { id: 6, name: "Midnight Black", primary: "#1F2937", secondary: "#374151" },
+];
+
+const EditProfile = () => {
+  const navigate = useNavigate();
+  const [selectedTemplate, setSelectedTemplate] = useState(1);
+  const [selectedColor, setSelectedColor] = useState(1);
+
+  const handleSave = () => {
+    toast.success("Profile updated successfully!");
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="border-b border-border">
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <Button
+            variant="ghost"
+            onClick={() => navigate("/")}
+            className="mb-2"
+          >
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back
+          </Button>
+          <h1 className="text-3xl font-bold text-foreground">Edit Profile</h1>
+          <p className="text-muted-foreground mt-1">Manage your account settings and preferences</p>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        <Tabs defaultValue="personal" className="space-y-6">
+          <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:inline-flex">
+            <TabsTrigger value="personal">Personal</TabsTrigger>
+            <TabsTrigger value="company">Company</TabsTrigger>
+            <TabsTrigger value="templates">Templates</TabsTrigger>
+            <TabsTrigger value="preferences">Preferences</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="personal" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Personal Information</CardTitle>
+                <CardDescription>Update your personal details and profile picture</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="flex items-center gap-6">
+                  <Avatar className="h-24 w-24">
+                    <AvatarImage src="" alt="Profile" />
+                    <AvatarFallback className="bg-primary/10 text-primary text-2xl font-semibold">
+                      JD
+                    </AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <Button variant="outline" size="sm">
+                      <Upload className="h-4 w-4 mr-2" />
+                      Upload Photo
+                    </Button>
+                    <p className="text-xs text-muted-foreground mt-2">JPG, PNG or GIF, max 5MB</p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="firstName">First Name</Label>
+                    <Input id="firstName" defaultValue="John" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="lastName">Last Name</Label>
+                    <Input id="lastName" defaultValue="Doe" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" defaultValue="john@example.com" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Phone Number</Label>
+                    <Input id="phone" type="tel" defaultValue="+234 123 456 7890" />
+                  </div>
+                  <div className="space-y-2 md:col-span-2">
+                    <Label htmlFor="address">Address</Label>
+                    <Input id="address" defaultValue="123 Business Street, Lagos" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="company" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Company Details</CardTitle>
+                <CardDescription>Manage your business information and branding</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="flex items-center gap-6">
+                  <div className="h-24 w-24 rounded-lg border-2 border-dashed border-border flex items-center justify-center bg-muted">
+                    <Upload className="h-8 w-8 text-muted-foreground" />
+                  </div>
+                  <div>
+                    <Button variant="outline" size="sm">
+                      <Upload className="h-4 w-4 mr-2" />
+                      Upload Logo
+                    </Button>
+                    <p className="text-xs text-muted-foreground mt-2">PNG or SVG, max 2MB</p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2 md:col-span-2">
+                    <Label htmlFor="companyName">Company Name</Label>
+                    <Input id="companyName" placeholder="Your Company Ltd" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="taxId">Tax ID / Registration Number</Label>
+                    <Input id="taxId" placeholder="123456789" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="industry">Industry</Label>
+                    <Input id="industry" placeholder="Technology, Consulting, etc." />
+                  </div>
+                  <div className="space-y-2 md:col-span-2">
+                    <Label htmlFor="companyAddress">Company Address</Label>
+                    <Input id="companyAddress" placeholder="123 Business Plaza, Lagos, Nigeria" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="website">Website</Label>
+                    <Input id="website" type="url" placeholder="https://yourcompany.com" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="companyEmail">Company Email</Label>
+                    <Input id="companyEmail" type="email" placeholder="info@yourcompany.com" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="templates" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Invoice Templates</CardTitle>
+                <CardDescription>Choose a template design for your invoices</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {invoiceTemplates.map((template) => (
+                    <div
+                      key={template.id}
+                      onClick={() => setSelectedTemplate(template.id)}
+                      className={`relative p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                        selectedTemplate === template.id
+                          ? "border-primary bg-primary/5"
+                          : "border-border hover:border-primary/50"
+                      }`}
+                    >
+                      {selectedTemplate === template.id && (
+                        <div className="absolute top-2 right-2 h-6 w-6 rounded-full bg-primary flex items-center justify-center">
+                          <Check className="h-4 w-4 text-primary-foreground" />
+                        </div>
+                      )}
+                      <div className="aspect-[3/4] bg-muted rounded mb-3 flex items-center justify-center">
+                        <FileText className="h-12 w-12 text-muted-foreground" />
+                      </div>
+                      <h3 className="font-semibold text-foreground">{template.name}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">{template.preview}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Color Combination</CardTitle>
+                <CardDescription>Select colors that match your brand</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                  {colorCombinations.map((combo) => (
+                    <div
+                      key={combo.id}
+                      onClick={() => setSelectedColor(combo.id)}
+                      className={`relative p-3 border-2 rounded-lg cursor-pointer transition-all ${
+                        selectedColor === combo.id
+                          ? "border-primary"
+                          : "border-border hover:border-primary/50"
+                      }`}
+                    >
+                      {selectedColor === combo.id && (
+                        <div className="absolute -top-2 -right-2 h-6 w-6 rounded-full bg-primary flex items-center justify-center">
+                          <Check className="h-3 w-3 text-primary-foreground" />
+                        </div>
+                      )}
+                      <div className="flex gap-2 mb-2">
+                        <div
+                          className="h-12 flex-1 rounded"
+                          style={{ backgroundColor: combo.primary }}
+                        />
+                        <div
+                          className="h-12 flex-1 rounded"
+                          style={{ backgroundColor: combo.secondary }}
+                        />
+                      </div>
+                      <p className="text-xs font-medium text-center text-foreground">{combo.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="preferences" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Regional Settings</CardTitle>
+                <CardDescription>Configure your currency and location preferences</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="currency">Default Currency</Label>
+                    <Input id="currency" defaultValue="NGN (₦)" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="timezone">Timezone</Label>
+                    <Input id="timezone" defaultValue="Africa/Lagos" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="language">Language</Label>
+                    <Input id="language" defaultValue="English" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="dateFormat">Date Format</Label>
+                    <Input id="dateFormat" defaultValue="DD/MM/YYYY" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Invoice Defaults</CardTitle>
+                <CardDescription>Set default values for your invoices</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="paymentTerms">Payment Terms (days)</Label>
+                    <Input id="paymentTerms" type="number" defaultValue="30" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="taxRate">Default Tax Rate (%)</Label>
+                    <Input id="taxRate" type="number" defaultValue="7.5" />
+                  </div>
+                  <div className="space-y-2 md:col-span-2">
+                    <Label htmlFor="notes">Default Invoice Notes</Label>
+                    <Input id="notes" placeholder="Thank you for your business!" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        <div className="flex justify-end gap-3 mt-6">
+          <Button variant="outline" onClick={() => navigate("/")}>
+            Cancel
+          </Button>
+          <Button onClick={handleSave}>
+            Save Changes
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EditProfile;
