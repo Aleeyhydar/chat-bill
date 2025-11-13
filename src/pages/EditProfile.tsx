@@ -183,8 +183,178 @@ const EditProfile = () => {
                           <Check className="h-4 w-4 text-primary-foreground" />
                         </div>
                       )}
-                      <div className="aspect-[3/4] bg-muted rounded mb-3 flex items-center justify-center">
-                        <FileText className="h-12 w-12 text-muted-foreground" />
+                      <div className="aspect-[3/4] bg-background rounded border border-border mb-3 p-3 overflow-hidden">
+                        {template.id === 1 && (
+                          <div className="space-y-2 text-[4px]">
+                            <div className="flex justify-between items-start">
+                              <div className="w-8 h-2 bg-primary/20 rounded" />
+                              <div className="text-right space-y-1">
+                                <div className="w-12 h-1 bg-muted rounded ml-auto" />
+                                <div className="w-10 h-1 bg-muted rounded ml-auto" />
+                              </div>
+                            </div>
+                            <div className="w-full h-[1px] bg-border my-2" />
+                            <div className="grid grid-cols-2 gap-2">
+                              <div className="space-y-1">
+                                <div className="w-full h-1 bg-muted rounded" />
+                                <div className="w-3/4 h-1 bg-muted rounded" />
+                              </div>
+                              <div className="space-y-1">
+                                <div className="w-full h-1 bg-muted rounded" />
+                                <div className="w-3/4 h-1 bg-muted rounded" />
+                              </div>
+                            </div>
+                            <div className="space-y-1 mt-4">
+                              <div className="flex justify-between">
+                                <div className="w-16 h-1 bg-muted rounded" />
+                                <div className="w-8 h-1 bg-muted rounded" />
+                              </div>
+                              <div className="flex justify-between">
+                                <div className="w-14 h-1 bg-muted rounded" />
+                                <div className="w-6 h-1 bg-muted rounded" />
+                              </div>
+                            </div>
+                            <div className="w-full h-[1px] bg-border my-2" />
+                            <div className="flex justify-between items-center">
+                              <div className="w-10 h-1.5 bg-primary/30 rounded" />
+                              <div className="w-8 h-1.5 bg-primary rounded" />
+                            </div>
+                          </div>
+                        )}
+                        {template.id === 2 && (
+                          <div className="space-y-2 text-[4px]">
+                            <div className="bg-muted/50 p-2 rounded space-y-1">
+                              <div className="w-10 h-1.5 bg-foreground/20 rounded" />
+                              <div className="w-8 h-1 bg-muted rounded" />
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 my-2">
+                              <div className="space-y-1">
+                                <div className="w-6 h-1 bg-muted/70 rounded" />
+                                <div className="w-full h-1 bg-muted rounded" />
+                                <div className="w-3/4 h-1 bg-muted rounded" />
+                              </div>
+                              <div className="space-y-1 text-right">
+                                <div className="w-6 h-1 bg-muted/70 rounded ml-auto" />
+                                <div className="w-full h-1 bg-muted rounded" />
+                                <div className="w-3/4 h-1 bg-muted rounded ml-auto" />
+                              </div>
+                            </div>
+                            <div className="border border-border rounded p-1.5 space-y-1">
+                              <div className="flex justify-between pb-1 border-b border-border">
+                                <div className="w-10 h-1 bg-muted/70 rounded" />
+                                <div className="w-6 h-1 bg-muted/70 rounded" />
+                              </div>
+                              <div className="flex justify-between">
+                                <div className="w-12 h-1 bg-muted rounded" />
+                                <div className="w-6 h-1 bg-muted rounded" />
+                              </div>
+                            </div>
+                            <div className="flex justify-end">
+                              <div className="w-12 h-1.5 bg-foreground/10 rounded" />
+                            </div>
+                          </div>
+                        )}
+                        {template.id === 3 && (
+                          <div className="space-y-2 text-[4px]">
+                            <div className="bg-gradient-to-r from-primary/30 to-primary/10 p-2 rounded-t space-y-1">
+                              <div className="w-12 h-2 bg-primary rounded" />
+                              <div className="w-8 h-1 bg-primary/50 rounded" />
+                            </div>
+                            <div className="px-1 space-y-2">
+                              <div className="flex gap-2">
+                                <div className="flex-1 space-y-1">
+                                  <div className="w-full h-1 bg-muted rounded" />
+                                  <div className="w-3/4 h-1 bg-muted rounded" />
+                                </div>
+                                <div className="flex-1 space-y-1">
+                                  <div className="w-full h-1 bg-muted rounded" />
+                                  <div className="w-3/4 h-1 bg-muted rounded" />
+                                </div>
+                              </div>
+                              <div className="bg-primary/5 rounded p-1.5 space-y-1">
+                                <div className="flex justify-between">
+                                  <div className="w-10 h-1 bg-primary/50 rounded" />
+                                  <div className="w-6 h-1 bg-primary/50 rounded" />
+                                </div>
+                                <div className="flex justify-between">
+                                  <div className="w-12 h-1 bg-muted rounded" />
+                                  <div className="w-6 h-1 bg-muted rounded" />
+                                </div>
+                              </div>
+                              <div className="flex justify-end">
+                                <div className="bg-primary/20 px-2 py-1 rounded">
+                                  <div className="w-8 h-1 bg-primary rounded" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {template.id === 4 && (
+                          <div className="space-y-2 text-[4px]">
+                            <div className="flex justify-between items-center pb-2 border-b-2 border-foreground/20">
+                              <div className="w-10 h-2 bg-foreground/10 rounded" />
+                              <div className="w-8 h-1.5 bg-muted rounded" />
+                            </div>
+                            <div className="grid grid-cols-2 gap-3 my-2">
+                              <div className="space-y-1">
+                                <div className="w-8 h-1 bg-foreground/30 rounded font-semibold" />
+                                <div className="w-full h-1 bg-muted/60 rounded" />
+                                <div className="w-3/4 h-1 bg-muted/60 rounded" />
+                              </div>
+                              <div className="space-y-1 text-right">
+                                <div className="w-8 h-1 bg-foreground/30 rounded ml-auto" />
+                                <div className="w-full h-1 bg-muted/60 rounded" />
+                                <div className="w-3/4 h-1 bg-muted/60 rounded ml-auto" />
+                              </div>
+                            </div>
+                            <div className="space-y-1 mt-3">
+                              <div className="flex justify-between py-1 border-b border-border">
+                                <div className="w-12 h-1 bg-muted/70 rounded" />
+                                <div className="w-8 h-1 bg-muted/70 rounded" />
+                              </div>
+                              <div className="flex justify-between py-1">
+                                <div className="w-10 h-1 bg-muted rounded" />
+                                <div className="w-6 h-1 bg-muted rounded" />
+                              </div>
+                            </div>
+                            <div className="flex justify-end mt-2 pt-2 border-t-2 border-foreground/20">
+                              <div className="w-10 h-1.5 bg-foreground/20 rounded" />
+                            </div>
+                          </div>
+                        )}
+                        {template.id === 5 && (
+                          <div className="space-y-2 text-[4px]">
+                            <div className="relative">
+                              <div className="absolute top-0 right-0 w-8 h-8 bg-primary/10 rounded-full -mr-4 -mt-2" />
+                              <div className="relative z-10 space-y-1">
+                                <div className="w-12 h-2 bg-gradient-to-r from-primary to-primary/50 rounded" />
+                                <div className="w-8 h-1 bg-muted rounded" />
+                              </div>
+                            </div>
+                            <div className="flex gap-2 my-3">
+                              <div className="w-2 h-12 bg-gradient-to-b from-primary/30 to-transparent rounded" />
+                              <div className="flex-1 space-y-2">
+                                <div className="space-y-1">
+                                  <div className="w-full h-1 bg-muted rounded" />
+                                  <div className="w-3/4 h-1 bg-muted rounded" />
+                                </div>
+                                <div className="bg-muted/30 rounded p-1.5 space-y-1">
+                                  <div className="flex justify-between">
+                                    <div className="w-10 h-1 bg-muted rounded" />
+                                    <div className="w-6 h-1 bg-primary/50 rounded" />
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <div className="w-8 h-1 bg-muted rounded" />
+                                    <div className="w-6 h-1 bg-primary/50 rounded" />
+                                  </div>
+                                </div>
+                                <div className="flex justify-end">
+                                  <div className="w-10 h-1.5 bg-gradient-to-r from-primary/50 to-primary rounded" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
                       </div>
                       <h3 className="font-semibold text-foreground">{template.name}</h3>
                       <p className="text-sm text-muted-foreground mt-1">{template.preview}</p>
