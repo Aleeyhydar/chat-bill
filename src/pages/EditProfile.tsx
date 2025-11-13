@@ -30,6 +30,8 @@ const EditProfile = () => {
   const navigate = useNavigate();
   const [selectedTemplate, setSelectedTemplate] = useState(1);
   const [selectedColor, setSelectedColor] = useState(1);
+  const [customPrimaryColor, setCustomPrimaryColor] = useState("#8B5CF6");
+  const [customSecondaryColor, setCustomSecondaryColor] = useState("#6366F1");
 
   const handleSave = () => {
     toast.success("Profile updated successfully!");
@@ -369,36 +371,101 @@ const EditProfile = () => {
                 <CardTitle>Color Combination</CardTitle>
                 <CardDescription>Select colors that match your brand</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                  {colorCombinations.map((combo) => (
-                    <div
-                      key={combo.id}
-                      onClick={() => setSelectedColor(combo.id)}
-                      className={`relative p-3 border-2 rounded-lg cursor-pointer transition-all ${
-                        selectedColor === combo.id
-                          ? "border-primary"
-                          : "border-border hover:border-primary/50"
-                      }`}
-                    >
-                      {selectedColor === combo.id && (
-                        <div className="absolute -top-2 -right-2 h-6 w-6 rounded-full bg-primary flex items-center justify-center">
-                          <Check className="h-3 w-3 text-primary-foreground" />
+              <CardContent className="space-y-6">
+                <div>
+                  <h4 className="text-sm font-medium mb-3 text-foreground">Preset Combinations</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    {colorCombinations.map((combo) => (
+                      <div
+                        key={combo.id}
+                        onClick={() => setSelectedColor(combo.id)}
+                        className={`relative p-3 border-2 rounded-lg cursor-pointer transition-all ${
+                          selectedColor === combo.id
+                            ? "border-primary"
+                            : "border-border hover:border-primary/50"
+                        }`}
+                      >
+                        {selectedColor === combo.id && (
+                          <div className="absolute -top-2 -right-2 h-6 w-6 rounded-full bg-primary flex items-center justify-center">
+                            <Check className="h-3 w-3 text-primary-foreground" />
+                          </div>
+                        )}
+                        <div className="flex gap-2 mb-2">
+                          <div
+                            className="h-12 flex-1 rounded"
+                            style={{ backgroundColor: combo.primary }}
+                          />
+                          <div
+                            className="h-12 flex-1 rounded"
+                            style={{ backgroundColor: combo.secondary }}
+                          />
                         </div>
-                      )}
-                      <div className="flex gap-2 mb-2">
-                        <div
-                          className="h-12 flex-1 rounded"
-                          style={{ backgroundColor: combo.primary }}
-                        />
-                        <div
-                          className="h-12 flex-1 rounded"
-                          style={{ backgroundColor: combo.secondary }}
+                        <p className="text-xs font-medium text-center text-foreground">{combo.name}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border-t border-border pt-6">
+                  <h4 className="text-sm font-medium mb-3 text-foreground">Custom Colors</h4>
+                  <p className="text-sm text-muted-foreground mb-4">Create your own color combination using the color pickers</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <Label htmlFor="primaryColor">Primary Color</Label>
+                      <div className="flex items-center gap-3">
+                        <div className="relative">
+                          <Input
+                            id="primaryColor"
+                            type="color"
+                            value={customPrimaryColor}
+                            onChange={(e) => setCustomPrimaryColor(e.target.value)}
+                            className="h-12 w-20 cursor-pointer p-1 border-2"
+                          />
+                        </div>
+                        <Input
+                          type="text"
+                          value={customPrimaryColor}
+                          onChange={(e) => setCustomPrimaryColor(e.target.value)}
+                          placeholder="#8B5CF6"
+                          className="flex-1 font-mono text-sm"
                         />
                       </div>
-                      <p className="text-xs font-medium text-center text-foreground">{combo.name}</p>
                     </div>
-                  ))}
+                    <div className="space-y-3">
+                      <Label htmlFor="secondaryColor">Secondary Color</Label>
+                      <div className="flex items-center gap-3">
+                        <div className="relative">
+                          <Input
+                            id="secondaryColor"
+                            type="color"
+                            value={customSecondaryColor}
+                            onChange={(e) => setCustomSecondaryColor(e.target.value)}
+                            className="h-12 w-20 cursor-pointer p-1 border-2"
+                          />
+                        </div>
+                        <Input
+                          type="text"
+                          value={customSecondaryColor}
+                          onChange={(e) => setCustomSecondaryColor(e.target.value)}
+                          placeholder="#6366F1"
+                          className="flex-1 font-mono text-sm"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-4 p-4 rounded-lg border-2 border-border bg-muted/30">
+                    <p className="text-xs text-muted-foreground mb-2">Preview</p>
+                    <div className="flex gap-3">
+                      <div
+                        className="h-16 flex-1 rounded-lg shadow-sm"
+                        style={{ backgroundColor: customPrimaryColor }}
+                      />
+                      <div
+                        className="h-16 flex-1 rounded-lg shadow-sm"
+                        style={{ backgroundColor: customSecondaryColor }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
