@@ -409,59 +409,55 @@ const EditProfile = () => {
                 <div className="border-t border-border pt-6">
                   <h4 className="text-sm font-medium mb-3 text-foreground">Custom Colors</h4>
                   <p className="text-sm text-muted-foreground mb-4">Create your own color combination using the color pickers</p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-3">
-                      <Label htmlFor="primaryColor">Primary Color</Label>
-                      <div className="flex items-center gap-3">
-                        <div className="relative">
-                          <Input
-                            id="primaryColor"
-                            type="color"
-                            value={customPrimaryColor}
-                            onChange={(e) => setCustomPrimaryColor(e.target.value)}
-                            className="h-12 w-20 cursor-pointer p-1 border-2"
-                          />
-                        </div>
+                  <div className="flex flex-col md:flex-row items-center gap-8 justify-center">
+                    <div className="flex flex-col items-center gap-3">
+                      <Label htmlFor="primaryColor" className="text-center">Primary Color</Label>
+                      <div className="relative">
                         <Input
-                          type="text"
+                          id="primaryColor"
+                          type="color"
                           value={customPrimaryColor}
                           onChange={(e) => setCustomPrimaryColor(e.target.value)}
-                          placeholder="#8B5CF6"
-                          className="flex-1 font-mono text-sm"
+                          className="h-24 w-24 cursor-pointer rounded-full p-1 border-4 border-border shadow-lg hover:scale-105 transition-transform"
                         />
                       </div>
+                      <Input
+                        type="text"
+                        value={customPrimaryColor}
+                        onChange={(e) => setCustomPrimaryColor(e.target.value)}
+                        placeholder="#8B5CF6"
+                        className="w-32 font-mono text-sm text-center"
+                      />
                     </div>
-                    <div className="space-y-3">
-                      <Label htmlFor="secondaryColor">Secondary Color</Label>
-                      <div className="flex items-center gap-3">
-                        <div className="relative">
-                          <Input
-                            id="secondaryColor"
-                            type="color"
-                            value={customSecondaryColor}
-                            onChange={(e) => setCustomSecondaryColor(e.target.value)}
-                            className="h-12 w-20 cursor-pointer p-1 border-2"
-                          />
-                        </div>
+                    <div className="flex flex-col items-center gap-3">
+                      <Label htmlFor="secondaryColor" className="text-center">Secondary Color</Label>
+                      <div className="relative">
                         <Input
-                          type="text"
+                          id="secondaryColor"
+                          type="color"
                           value={customSecondaryColor}
                           onChange={(e) => setCustomSecondaryColor(e.target.value)}
-                          placeholder="#6366F1"
-                          className="flex-1 font-mono text-sm"
+                          className="h-24 w-24 cursor-pointer rounded-full p-1 border-4 border-border shadow-lg hover:scale-105 transition-transform"
                         />
                       </div>
+                      <Input
+                        type="text"
+                        value={customSecondaryColor}
+                        onChange={(e) => setCustomSecondaryColor(e.target.value)}
+                        placeholder="#6366F1"
+                        className="w-32 font-mono text-sm text-center"
+                      />
                     </div>
                   </div>
-                  <div className="mt-4 p-4 rounded-lg border-2 border-border bg-muted/30">
-                    <p className="text-xs text-muted-foreground mb-2">Preview</p>
-                    <div className="flex gap-3">
+                  <div className="mt-6 p-3 rounded-lg border border-border bg-muted/30 max-w-md mx-auto">
+                    <p className="text-xs text-muted-foreground mb-2 text-center">Preview</p>
+                    <div className="flex gap-2">
                       <div
-                        className="h-16 flex-1 rounded-lg shadow-sm"
+                        className="h-10 flex-1 rounded shadow-sm"
                         style={{ backgroundColor: customPrimaryColor }}
                       />
                       <div
-                        className="h-16 flex-1 rounded-lg shadow-sm"
+                        className="h-10 flex-1 rounded shadow-sm"
                         style={{ backgroundColor: customSecondaryColor }}
                       />
                     </div>
