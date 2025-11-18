@@ -465,6 +465,43 @@ const EditProfile = () => {
                 </div>
               </CardContent>
             </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Custom Template Upload</CardTitle>
+                <CardDescription>Import your own invoice template design</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-primary/50 transition-colors">
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="h-16 w-16 rounded-full bg-muted flex items-center justify-center">
+                      <Upload className="h-8 w-8 text-muted-foreground" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground mb-1">
+                        Drop your template file here or click to browse
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        Supports HTML, PDF, or DOCX files (max 10MB)
+                      </p>
+                    </div>
+                    <Button variant="outline" size="sm">
+                      <FileText className="h-4 w-4 mr-2" />
+                      Choose File
+                    </Button>
+                  </div>
+                </div>
+                
+                <div className="bg-muted/30 rounded-lg p-4 space-y-2">
+                  <h4 className="text-sm font-semibold text-foreground">Template Requirements:</h4>
+                  <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                    <li>Must include placeholders for invoice data (number, date, items, totals)</li>
+                    <li>Should be responsive and printer-friendly</li>
+                    <li>Can include your custom branding and styling</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
           <TabsContent value="preferences" className="space-y-6">
