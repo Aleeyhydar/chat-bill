@@ -192,8 +192,8 @@ const EditProfile = () => {
                               transform: 'scale(0.37)', 
                               transformOrigin: 'top left', 
                               width: '270%',
-                              '--user-primary-color': selectedColor ? colorCombinations.find(c => c.id === selectedColor)?.primary || customPrimaryColor : customPrimaryColor,
-                              '--user-secondary-color': selectedColor ? colorCombinations.find(c => c.id === selectedColor)?.secondary || customSecondaryColor : customSecondaryColor,
+                              '--user-primary-color': selectedColor && selectedColor !== 0 ? colorCombinations.find(c => c.id === selectedColor)?.primary : customPrimaryColor,
+                              '--user-secondary-color': selectedColor && selectedColor !== 0 ? colorCombinations.find(c => c.id === selectedColor)?.secondary : customSecondaryColor,
                               '--user-bg-color': '#ffffff',
                               '--user-text-color': '#222222',
                               '--user-border-color': '#e0e0e0',
@@ -464,14 +464,20 @@ const EditProfile = () => {
                           id="primaryColor"
                           type="color"
                           value={customPrimaryColor}
-                          onChange={(e) => setCustomPrimaryColor(e.target.value)}
+                          onChange={(e) => {
+                            setCustomPrimaryColor(e.target.value);
+                            setSelectedColor(0);
+                          }}
                           className="h-24 w-24 cursor-pointer rounded-full p-1 border-4 border-border shadow-lg hover:scale-105 transition-transform"
                         />
                       </div>
                       <Input
                         type="text"
                         value={customPrimaryColor}
-                        onChange={(e) => setCustomPrimaryColor(e.target.value)}
+                        onChange={(e) => {
+                          setCustomPrimaryColor(e.target.value);
+                          setSelectedColor(0);
+                        }}
                         placeholder="#8B5CF6"
                         className="w-32 font-mono text-sm text-center"
                       />
@@ -483,14 +489,20 @@ const EditProfile = () => {
                           id="secondaryColor"
                           type="color"
                           value={customSecondaryColor}
-                          onChange={(e) => setCustomSecondaryColor(e.target.value)}
+                          onChange={(e) => {
+                            setCustomSecondaryColor(e.target.value);
+                            setSelectedColor(0);
+                          }}
                           className="h-24 w-24 cursor-pointer rounded-full p-1 border-4 border-border shadow-lg hover:scale-105 transition-transform"
                         />
                       </div>
                       <Input
                         type="text"
                         value={customSecondaryColor}
-                        onChange={(e) => setCustomSecondaryColor(e.target.value)}
+                        onChange={(e) => {
+                          setCustomSecondaryColor(e.target.value);
+                          setSelectedColor(0);
+                        }}
                         placeholder="#6366F1"
                         className="w-32 font-mono text-sm text-center"
                       />
