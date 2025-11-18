@@ -81,8 +81,8 @@ const ChatArea = () => {
       
       {messages.length === 0 ? (
         /* Welcome Screen - ChatGPT Style */
-        <div className="flex-1 flex flex-col items-center justify-center px-4 relative z-10">
-          <div className="w-full max-w-4xl space-y-8">
+        <div className="flex-1 flex flex-col items-center px-4 py-8 relative z-10 overflow-y-auto">
+          <div className="w-full max-w-4xl space-y-6 my-auto">
             <div className="text-center space-y-4 mb-8">
               <div className="relative inline-block">
                 <Sparkles className="h-16 w-16 text-primary mx-auto mb-6 animate-pulse" />
