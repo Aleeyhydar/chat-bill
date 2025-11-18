@@ -185,41 +185,53 @@ const EditProfile = () => {
                           <Check className="h-4 w-4 text-primary-foreground" />
                         </div>
                       )}
-                      <div className="aspect-[3/4] bg-background rounded border border-border mb-3 p-3 overflow-hidden">
+                      <div className="aspect-[3/4] bg-background rounded border border-border mb-3 overflow-hidden relative">
                         {template.id === 1 && (
-                          <div className="space-y-2 text-[4px]">
-                            <div className="flex justify-between items-start">
-                              <div className="w-8 h-2 bg-primary/20 rounded" />
-                              <div className="text-right space-y-1">
-                                <div className="w-12 h-1 bg-muted rounded ml-auto" />
-                                <div className="w-10 h-1 bg-muted rounded ml-auto" />
+                          <div className="w-full h-full overflow-hidden">
+                            <div style={{ transform: 'scale(0.28)', transformOrigin: 'top left', width: '700px' }}>
+                              <div style={{ maxWidth: '700px', margin: '0 auto', padding: '30px', background: '#fff', borderRadius: '12px', fontFamily: 'Arial, sans-serif' }}>
+                                <div style={{ marginBottom: '20px' }}>
+                                  <h1 style={{ fontSize: '32px', fontWeight: 'bold', marginBottom: '5px' }}>INVOICE</h1>
+                                  <p style={{ margin: 0, fontSize: '14px' }}>Invoice #: INV-001</p>
+                                  <p style={{ margin: 0, fontSize: '14px' }}>Date: 2025-01-01</p>
+                                </div>
+                                <div style={{ marginTop: '20px' }}>
+                                  <h3 style={{ fontSize: '18px', fontWeight: 'bold' }}>My Company Name</h3>
+                                  <p style={{ fontSize: '14px', margin: '2px 0' }}>123 Street, City</p>
+                                  <p style={{ fontSize: '14px', margin: '2px 0' }}>Email: company@email.com</p>
+                                </div>
+                                <div style={{ marginTop: '20px' }}>
+                                  <h3 style={{ fontSize: '18px', fontWeight: 'bold' }}>Billed To</h3>
+                                  <p style={{ fontSize: '14px', margin: '2px 0' }}>Client Name</p>
+                                  <p style={{ fontSize: '14px', margin: '2px 0' }}>123 Client Street</p>
+                                </div>
+                                <table style={{ width: '100%', marginTop: '20px', borderCollapse: 'collapse' }}>
+                                  <thead>
+                                    <tr>
+                                      <th style={{ border: '1px solid #ccc', padding: '10px', textAlign: 'left', fontSize: '14px' }}>Description</th>
+                                      <th style={{ border: '1px solid #ccc', padding: '10px', textAlign: 'left', fontSize: '14px' }}>Qty</th>
+                                      <th style={{ border: '1px solid #ccc', padding: '10px', textAlign: 'left', fontSize: '14px' }}>Rate</th>
+                                      <th style={{ border: '1px solid #ccc', padding: '10px', textAlign: 'left', fontSize: '14px' }}>Total</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td style={{ border: '1px solid #ccc', padding: '10px', fontSize: '14px' }}>Service 1</td>
+                                      <td style={{ border: '1px solid #ccc', padding: '10px', fontSize: '14px' }}>1</td>
+                                      <td style={{ border: '1px solid #ccc', padding: '10px', fontSize: '14px' }}>$100</td>
+                                      <td style={{ border: '1px solid #ccc', padding: '10px', fontSize: '14px' }}>$100</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div style={{ marginTop: '20px', textAlign: 'right' }}>
+                                  <p style={{ margin: '5px 0', fontSize: '14px' }}>Subtotal: $100</p>
+                                  <p style={{ margin: '5px 0', fontSize: '14px' }}>Tax: $0</p>
+                                  <h3 style={{ fontSize: '18px', fontWeight: 'bold', margin: '5px 0' }}>Total: $100</h3>
+                                </div>
+                                <div style={{ marginTop: '30px', textAlign: 'center', fontSize: '14px' }}>
+                                  <p>Thank you for your business!</p>
+                                </div>
                               </div>
-                            </div>
-                            <div className="w-full h-[1px] bg-border my-2" />
-                            <div className="grid grid-cols-2 gap-2">
-                              <div className="space-y-1">
-                                <div className="w-full h-1 bg-muted rounded" />
-                                <div className="w-3/4 h-1 bg-muted rounded" />
-                              </div>
-                              <div className="space-y-1">
-                                <div className="w-full h-1 bg-muted rounded" />
-                                <div className="w-3/4 h-1 bg-muted rounded" />
-                              </div>
-                            </div>
-                            <div className="space-y-1 mt-4">
-                              <div className="flex justify-between">
-                                <div className="w-16 h-1 bg-muted rounded" />
-                                <div className="w-8 h-1 bg-muted rounded" />
-                              </div>
-                              <div className="flex justify-between">
-                                <div className="w-14 h-1 bg-muted rounded" />
-                                <div className="w-6 h-1 bg-muted rounded" />
-                              </div>
-                            </div>
-                            <div className="w-full h-[1px] bg-border my-2" />
-                            <div className="flex justify-between items-center">
-                              <div className="w-10 h-1.5 bg-primary/30 rounded" />
-                              <div className="w-8 h-1.5 bg-primary rounded" />
                             </div>
                           </div>
                         )}
