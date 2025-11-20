@@ -32,21 +32,6 @@ const EditProfile = () => {
   const [selectedColor, setSelectedColor] = useState(1);
   const [customPrimaryColor, setCustomPrimaryColor] = useState("#8B5CF6");
   const [customSecondaryColor, setCustomSecondaryColor] = useState("#6366F1");
-  const [orderedTemplates, setOrderedTemplates] = useState(invoiceTemplates);
-
-  const handleTemplateSelect = (templateId: number) => {
-    setSelectedTemplate(templateId);
-    
-    // Move selected template to the front
-    const selectedTemplateObj = orderedTemplates.find(t => t.id === templateId);
-    if (selectedTemplateObj) {
-      const newOrder = [
-        selectedTemplateObj,
-        ...orderedTemplates.filter(t => t.id !== templateId)
-      ];
-      setOrderedTemplates(newOrder);
-    }
-  };
 
   const handleSave = () => {
     toast.success("Profile updated successfully!");
@@ -185,10 +170,10 @@ const EditProfile = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {orderedTemplates.map((template) => (
+                  {invoiceTemplates.map((template) => (
                     <div
                       key={template.id}
-                      onClick={() => handleTemplateSelect(template.id)}
+                      onClick={() => setSelectedTemplate(template.id)}
                       className={`relative p-4 border-2 rounded-lg cursor-pointer transition-all ${
                         selectedTemplate === template.id
                           ? "border-primary bg-primary/5"
