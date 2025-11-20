@@ -271,35 +271,93 @@ const EditProfile = () => {
                           </div>
                         )}
                         {template.id === 2 && (
-                          <div className="space-y-2 text-[4px]">
-                            <div className="bg-muted/50 p-2 rounded space-y-1">
-                              <div className="w-10 h-1.5 bg-foreground/20 rounded" />
-                              <div className="w-8 h-1 bg-muted rounded" />
-                            </div>
-                            <div className="grid grid-cols-2 gap-2 my-2">
-                              <div className="space-y-1">
-                                <div className="w-6 h-1 bg-muted/70 rounded" />
-                                <div className="w-full h-1 bg-muted rounded" />
-                                <div className="w-3/4 h-1 bg-muted rounded" />
+                          <div className="w-full h-full overflow-hidden">
+                            <div style={{ 
+                              transform: 'scale(0.37)', 
+                              transformOrigin: 'top left', 
+                              width: '270%',
+                              '--user-primary-color': selectedColor && selectedColor !== 0 ? colorCombinations.find(c => c.id === selectedColor)?.primary : customPrimaryColor,
+                              '--user-secondary-color': selectedColor && selectedColor !== 0 ? colorCombinations.find(c => c.id === selectedColor)?.secondary : customSecondaryColor,
+                              '--user-bg-color': '#ffffff',
+                              '--user-text-color': '#333333',
+                              '--user-border-color': '#dddddd',
+                            } as React.CSSProperties}>
+                              <div style={{ 
+                                background: 'var(--user-bg-color)', 
+                                color: 'var(--user-text-color)', 
+                                padding: '40px',
+                                maxWidth: '850px',
+                                margin: 'auto',
+                                border: '1px solid var(--user-border-color)',
+                                borderRadius: '10px',
+                                fontFamily: '"Georgia", serif'
+                              }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '2px solid var(--user-border-color)', paddingBottom: '25px', marginBottom: '30px' }}>
+                                  <div style={{ display: 'flex', gap: '15px' }}>
+                                    <div style={{ width: '70px', height: '70px', background: 'var(--user-border-color)', borderRadius: '6px' }}></div>
+                                    <div>
+                                      <h1 style={{ margin: 0, fontSize: '24px', color: 'var(--user-primary-color)' }}>Company Name</h1>
+                                      <p style={{ margin: '2px 0', fontSize: '14px' }}>123 Business Avenue, City</p>
+                                      <p style={{ margin: '2px 0', fontSize: '14px' }}>email@example.com</p>
+                                      <p style={{ margin: '2px 0', fontSize: '14px' }}>+123 456 7890</p>
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <table style={{ fontSize: '14px' }}>
+                                      <tbody>
+                                        <tr><td style={{ padding: '3px 8px' }}>Invoice #:</td><td style={{ padding: '3px 8px' }}>INV-001</td></tr>
+                                        <tr><td style={{ padding: '3px 8px' }}>Date:</td><td style={{ padding: '3px 8px' }}>2025-01-01</td></tr>
+                                        <tr><td style={{ padding: '3px 8px' }}>Due:</td><td style={{ padding: '3px 8px' }}>On Receipt</td></tr>
+                                        <tr><td style={{ padding: '3px 8px' }}>Balance Due:</td><td style={{ padding: '3px 8px', fontWeight: 'bold', color: 'var(--user-primary-color)' }}>₦0</td></tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+
+                                <div style={{ marginTop: '25px' }}>
+                                  <h2 style={{ fontSize: '18px', marginBottom: '10px', color: 'var(--user-primary-color)', borderBottom: '1px solid var(--user-border-color)', paddingBottom: '5px' }}>Bill To</h2>
+                                  <p style={{ margin: '2px 0', fontSize: '14px' }}>Client Name</p>
+                                  <p style={{ margin: '2px 0', fontSize: '14px' }}>Client Contact</p>
+                                </div>
+
+                                <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+                                  <thead>
+                                    <tr>
+                                      <th style={{ background: 'var(--user-primary-color)', color: '#fff', padding: '12px', fontSize: '14px', textAlign: 'left' }}>Description</th>
+                                      <th style={{ background: 'var(--user-primary-color)', color: '#fff', padding: '12px', fontSize: '14px', textAlign: 'left' }}>Rate</th>
+                                      <th style={{ background: 'var(--user-primary-color)', color: '#fff', padding: '12px', fontSize: '14px', textAlign: 'left' }}>Qty</th>
+                                      <th style={{ background: 'var(--user-primary-color)', color: '#fff', padding: '12px', fontSize: '14px', textAlign: 'left' }}>Total</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td style={{ padding: '12px', borderBottom: '1px solid var(--user-border-color)', fontSize: '14px' }}>Example Service</td>
+                                      <td style={{ padding: '12px', borderBottom: '1px solid var(--user-border-color)', fontSize: '14px' }}>₦100</td>
+                                      <td style={{ padding: '12px', borderBottom: '1px solid var(--user-border-color)', fontSize: '14px' }}>1</td>
+                                      <td style={{ padding: '12px', borderBottom: '1px solid var(--user-border-color)', fontSize: '14px' }}>₦100</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+
+                                <div style={{ marginTop: '25px', width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
+                                  <table style={{ width: '300px' }}>
+                                    <tbody>
+                                      <tr><td style={{ padding: '6px 0', fontSize: '14px' }}>Subtotal:</td><td style={{ padding: '6px 0', fontSize: '14px' }}>₦100</td></tr>
+                                      <tr><td style={{ padding: '6px 0', fontSize: '14px' }}>Discount:</td><td style={{ padding: '6px 0', fontSize: '14px' }}>₦0</td></tr>
+                                      <tr><td style={{ padding: '6px 0', fontSize: '14px' }}>Total:</td><td style={{ padding: '6px 0', fontSize: '18px', fontWeight: 'bold', color: 'var(--user-primary-color)' }}>₦100</td></tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+
+                                <div style={{ marginTop: '25px' }}>
+                                  <h2 style={{ fontSize: '18px', marginBottom: '10px', color: 'var(--user-primary-color)', borderBottom: '1px solid var(--user-border-color)', paddingBottom: '5px' }}>Payment Information</h2>
+                                  <p style={{ margin: '2px 0', fontSize: '14px' }}>Bank Name — Account Number — Account Name</p>
+                                </div>
+
+                                <p style={{ marginTop: '50px', textAlign: 'center', fontSize: '13px', color: 'var(--user-secondary-color)' }}>
+                                  Thank you for your business.
+                                </p>
                               </div>
-                              <div className="space-y-1 text-right">
-                                <div className="w-6 h-1 bg-muted/70 rounded ml-auto" />
-                                <div className="w-full h-1 bg-muted rounded" />
-                                <div className="w-3/4 h-1 bg-muted rounded ml-auto" />
-                              </div>
-                            </div>
-                            <div className="border border-border rounded p-1.5 space-y-1">
-                              <div className="flex justify-between pb-1 border-b border-border">
-                                <div className="w-10 h-1 bg-muted/70 rounded" />
-                                <div className="w-6 h-1 bg-muted/70 rounded" />
-                              </div>
-                              <div className="flex justify-between">
-                                <div className="w-12 h-1 bg-muted rounded" />
-                                <div className="w-6 h-1 bg-muted rounded" />
-                              </div>
-                            </div>
-                            <div className="flex justify-end">
-                              <div className="w-12 h-1.5 bg-foreground/10 rounded" />
                             </div>
                           </div>
                         )}
