@@ -181,7 +181,7 @@ const EditProfile = () => {
                       }`}
                     >
                       {selectedTemplate === template.id && (
-                        <div className="absolute top-2 right-2 h-6 w-6 rounded-full bg-primary flex items-center justify-center">
+                        <div className="absolute top-2 right-2 h-6 w-6 rounded-full bg-primary flex items-center justify-center z-20">
                           <Check className="h-4 w-4 text-primary-foreground" />
                         </div>
                       )}
