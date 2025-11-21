@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 
 // Mock data
 const mockUsers = [
@@ -19,6 +21,79 @@ const mockTemplates = [
   { id: 2, name: "Modern Minimal", enabled: true, usageCount: 189 },
   { id: 3, name: "Bold Creative", enabled: false, usageCount: 56 },
   { id: 4, name: "Elegant Corporate", enabled: true, usageCount: 312 },
+];
+
+// Mock chart data
+const invoiceTrendsData = [
+  { month: "Jan", invoices: 45 },
+  { month: "Feb", invoices: 52 },
+  { month: "Mar", invoices: 61 },
+  { month: "Apr", invoices: 58 },
+  { month: "May", invoices: 72 },
+  { month: "Jun", invoices: 85 },
+  { month: "Jul", invoices: 93 },
+  { month: "Aug", invoices: 89 },
+  { month: "Sep", invoices: 105 },
+  { month: "Oct", invoices: 112 },
+  { month: "Nov", invoices: 118 },
+  { month: "Dec", invoices: 127 },
+];
+
+const topUsersData = [
+  { name: "Alice W.", invoices: 67 },
+  { name: "Jane S.", invoices: 45 },
+  { name: "Bob J.", invoices: 38 },
+  { name: "John D.", invoices: 23 },
+  { name: "Mike R.", invoices: 19 },
+];
+
+const monthlyRevenueData = [
+  { month: "Jan", revenue: 145000 },
+  { month: "Feb", revenue: 158000 },
+  { month: "Mar", revenue: 172000 },
+  { month: "Apr", revenue: 165000 },
+  { month: "May", revenue: 183000 },
+  { month: "Jun", revenue: 198000 },
+  { month: "Jul", revenue: 215000 },
+  { month: "Aug", revenue: 203000 },
+  { month: "Sep", revenue: 227000 },
+  { month: "Oct", revenue: 241000 },
+  { month: "Nov", revenue: 256000 },
+  { month: "Dec", revenue: 278000 },
+];
+
+const revenueBreakdownData = [
+  { name: "Subscriptions", value: 1850000, color: "hsl(var(--primary))" },
+  { name: "One-time Purchases", value: 420000, color: "hsl(var(--accent))" },
+  { name: "Add-ons", value: 130000, color: "hsl(var(--muted))" },
+];
+
+const userGrowthData = [
+  { month: "Jan", users: 120 },
+  { month: "Feb", users: 145 },
+  { month: "Mar", users: 178 },
+  { month: "Apr", users: 210 },
+  { month: "May", users: 245 },
+  { month: "Jun", users: 289 },
+  { month: "Jul", users: 325 },
+  { month: "Aug", users: 367 },
+  { month: "Sep", users: 412 },
+  { month: "Oct", users: 458 },
+  { month: "Nov", users: 502 },
+  { month: "Dec", users: 556 },
+];
+
+const subscriptionDistributionData = [
+  { name: "Free", value: 156, color: "hsl(var(--muted))" },
+  { name: "Pro", value: 89, color: "hsl(var(--primary))" },
+  { name: "Business", value: 97, color: "hsl(var(--accent))" },
+];
+
+const templateUsageData = [
+  { name: "Elegant Corporate", usage: 312 },
+  { name: "Professional Classic", usage: 234 },
+  { name: "Modern Minimal", usage: 189 },
+  { name: "Bold Creative", usage: 56 },
 ];
 
 const navItems = [
@@ -146,7 +221,7 @@ export default function Admin() {
               <p className="text-muted-foreground">Track invoice generation and trends</p>
             </div>
             
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-6 md:grid-cols-2 mb-6">
               <Card>
                 <CardHeader>
                   <CardTitle>Total Invoices</CardTitle>
@@ -183,12 +258,62 @@ export default function Admin() {
                   <CardDescription>Monthly invoice generation over time</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="h-48 flex items-center justify-center border border-dashed border-border rounded-lg">
-                    <p className="text-muted-foreground">Chart Placeholder</p>
-                  </div>
+                  <ChartContainer
+                    config={{
+                      invoices: {
+                        label: "Invoices",
+                        color: "hsl(var(--primary))",
+                      },
+                    }}
+                    className="h-[200px]"
+                  >
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart data={invoiceTrendsData}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                        <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                        <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                        <ChartTooltip content={<ChartTooltipContent />} />
+                        <Line 
+                          type="monotone" 
+                          dataKey="invoices" 
+                          stroke="hsl(var(--primary))" 
+                          strokeWidth={2}
+                          dot={{ fill: "hsl(var(--primary))" }}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </ChartContainer>
                 </CardContent>
               </Card>
             </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Top Users by Invoice Count</CardTitle>
+                <CardDescription>Users generating the most invoices</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer
+                  config={{
+                    invoices: {
+                      label: "Invoices",
+                      color: "hsl(var(--accent))",
+                    },
+                  }}
+                  className="h-[250px]"
+                >
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={topUsersData}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                      <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                      <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                      <ChartTooltip content={<ChartTooltipContent />} />
+                      <Bar dataKey="invoices" fill="hsl(var(--accent))" radius={[4, 4, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </ChartContainer>
+              </CardContent>
+            </Card>
           </section>
 
           {/* Template Manager Section */}
@@ -283,17 +408,81 @@ export default function Admin() {
               </Card>
             </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Revenue Trends</CardTitle>
-                <CardDescription>Monthly revenue over the past year</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="h-64 flex items-center justify-center border border-dashed border-border rounded-lg">
-                  <p className="text-muted-foreground">Chart Placeholder</p>
-                </div>
-              </CardContent>
-            </Card>
+            <div className="grid gap-6 md:grid-cols-2">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Monthly Revenue</CardTitle>
+                  <CardDescription>Revenue trends over the past year</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ChartContainer
+                    config={{
+                      revenue: {
+                        label: "Revenue",
+                        color: "hsl(var(--primary))",
+                      },
+                    }}
+                    className="h-[300px]"
+                  >
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={monthlyRevenueData}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                        <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                        <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                        <ChartTooltip content={<ChartTooltipContent />} />
+                        <Bar dataKey="revenue" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </ChartContainer>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Revenue Breakdown</CardTitle>
+                  <CardDescription>Distribution by revenue source</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ChartContainer
+                    config={{
+                      subscriptions: {
+                        label: "Subscriptions",
+                        color: "hsl(var(--primary))",
+                      },
+                      onetime: {
+                        label: "One-time",
+                        color: "hsl(var(--accent))",
+                      },
+                      addons: {
+                        label: "Add-ons",
+                        color: "hsl(var(--muted))",
+                      },
+                    }}
+                    className="h-[300px]"
+                  >
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <ChartTooltip content={<ChartTooltipContent />} />
+                        <Pie
+                          data={revenueBreakdownData}
+                          cx="50%"
+                          cy="50%"
+                          innerRadius={60}
+                          outerRadius={100}
+                          paddingAngle={5}
+                          dataKey="value"
+                        >
+                          {revenueBreakdownData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          ))}
+                        </Pie>
+                        <Legend />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </ChartContainer>
+                </CardContent>
+              </Card>
+            </div>
           </section>
 
           {/* Analytics Overview Section */}
@@ -310,9 +499,31 @@ export default function Admin() {
                   <CardDescription>New registrations over time</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="h-48 flex items-center justify-center border border-dashed border-border rounded-lg">
-                    <p className="text-muted-foreground">Chart Placeholder</p>
-                  </div>
+                  <ChartContainer
+                    config={{
+                      users: {
+                        label: "Users",
+                        color: "hsl(var(--primary))",
+                      },
+                    }}
+                    className="h-[200px]"
+                  >
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart data={userGrowthData}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                        <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={10} />
+                        <YAxis stroke="hsl(var(--muted-foreground))" fontSize={10} />
+                        <ChartTooltip content={<ChartTooltipContent />} />
+                        <Line 
+                          type="monotone" 
+                          dataKey="users" 
+                          stroke="hsl(var(--primary))" 
+                          strokeWidth={2}
+                          dot={{ fill: "hsl(var(--primary))" }}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </ChartContainer>
                   <div className="mt-4 space-y-2">
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">This Week</span>
@@ -328,33 +539,46 @@ export default function Admin() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Template Usage</CardTitle>
-                  <CardDescription>Most popular templates</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="h-48 flex items-center justify-center border border-dashed border-border rounded-lg">
-                    <p className="text-muted-foreground">Chart Placeholder</p>
-                  </div>
-                  <div className="mt-4 space-y-2">
-                    {mockTemplates.slice(0, 3).map((template) => (
-                      <div key={template.id} className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">{template.name}</span>
-                        <span className="font-medium">{template.usageCount}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
                   <CardTitle>Subscription Distribution</CardTitle>
                   <CardDescription>Users by plan type</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="h-48 flex items-center justify-center border border-dashed border-border rounded-lg">
-                    <p className="text-muted-foreground">Chart Placeholder</p>
-                  </div>
+                  <ChartContainer
+                    config={{
+                      free: {
+                        label: "Free",
+                        color: "hsl(var(--muted))",
+                      },
+                      pro: {
+                        label: "Pro",
+                        color: "hsl(var(--primary))",
+                      },
+                      business: {
+                        label: "Business",
+                        color: "hsl(var(--accent))",
+                      },
+                    }}
+                    className="h-[200px]"
+                  >
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <ChartTooltip content={<ChartTooltipContent />} />
+                        <Pie
+                          data={subscriptionDistributionData}
+                          cx="50%"
+                          cy="50%"
+                          outerRadius={70}
+                          paddingAngle={5}
+                          dataKey="value"
+                        >
+                          {subscriptionDistributionData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          ))}
+                        </Pie>
+                        <Legend />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </ChartContainer>
                   <div className="mt-4 space-y-2">
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">Free</span>
@@ -368,6 +592,42 @@ export default function Admin() {
                       <span className="text-muted-foreground">Business</span>
                       <span className="font-medium">97</span>
                     </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Template Usage</CardTitle>
+                  <CardDescription>Most popular templates</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ChartContainer
+                    config={{
+                      usage: {
+                        label: "Usage",
+                        color: "hsl(var(--accent))",
+                      },
+                    }}
+                    className="h-[200px]"
+                  >
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={templateUsageData} layout="vertical">
+                        <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                        <XAxis type="number" stroke="hsl(var(--muted-foreground))" fontSize={10} />
+                        <YAxis type="category" dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={10} width={100} />
+                        <ChartTooltip content={<ChartTooltipContent />} />
+                        <Bar dataKey="usage" fill="hsl(var(--accent))" radius={[0, 4, 4, 0]} />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </ChartContainer>
+                  <div className="mt-4 space-y-2">
+                    {mockTemplates.slice(0, 3).map((template) => (
+                      <div key={template.id} className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">{template.name}</span>
+                        <span className="font-medium">{template.usageCount}</span>
+                      </div>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
