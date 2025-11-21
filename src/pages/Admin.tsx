@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Users, FileText, Layout, DollarSign, TrendingUp, Plus } from "lucide-react";
+import { Users, FileText, Layout, DollarSign, TrendingUp, Plus, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -32,6 +32,7 @@ const navItems = [
 export default function Admin() {
   const [activeSection, setActiveSection] = useState("users");
   const [invoiceTimeRange, setInvoiceTimeRange] = useState("all");
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const scrollToSection = (id: string) => {
     setActiveSection(id);
@@ -41,10 +42,20 @@ export default function Admin() {
   return (
     <div className="flex h-screen bg-background">
       {/* Sidebar */}
-      <aside className="w-64 border-r border-border bg-card flex flex-col">
-        <div className="p-6 border-b border-border">
-          <h1 className="text-2xl font-bold text-foreground">Admin</h1>
-          <p className="text-sm text-muted-foreground">Dashboard</p>
+      <aside className={`${sidebarCollapsed ? "w-20" : "w-64"} border-r border-border bg-card flex flex-col transition-all duration-300`}>
+        <div className="p-6 border-b border-border flex items-center justify-between">
+          <div className={`${sidebarCollapsed ? "hidden" : "block"}`}>
+            <h1 className="text-2xl font-bold text-foreground">Admin</h1>
+            <p className="text-sm text-muted-foreground">Dashboard</p>
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+            className={`${sidebarCollapsed ? "mx-auto" : ""}`}
+          >
+            {sidebarCollapsed ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
+          </Button>
         </div>
         
         <nav className="flex-1 p-4 space-y-2">
@@ -54,14 +65,15 @@ export default function Admin() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                className={`w-full flex items-center ${sidebarCollapsed ? "justify-center" : "gap-3"} px-4 py-3 rounded-lg transition-colors ${
                   activeSection === item.id
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground"
                 }`}
+                title={sidebarCollapsed ? item.label : undefined}
               >
-                <Icon className="w-5 h-5" />
-                <span className="font-medium">{item.label}</span>
+                <Icon className="w-5 h-5 shrink-0" />
+                {!sidebarCollapsed && <span className="font-medium">{item.label}</span>}
               </button>
             );
           })}
