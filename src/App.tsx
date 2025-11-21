@@ -9,6 +9,7 @@ import SignIn from "./pages/SignIn";
 import EditProfile from "./pages/EditProfile";
 import ViewPlans from "./pages/ViewPlans";
 import Settings from "./pages/Settings";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/plans" element={<ViewPlans />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
