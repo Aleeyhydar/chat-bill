@@ -26,10 +26,10 @@ const Index = () => {
               onMouseLeave={() => setMenuHovered(false)}
               className="hover:bg-muted"
             >
-              {menuHovered ? (
-                <Menu className="h-5 w-5" />
+            {menuHovered ? (
+                <Menu className="h-6 w-6" />
               ) : (
-                <Sparkles className="h-5 w-5 text-primary" />
+                <Sparkles className="h-6 w-6 text-primary" />
               )}
             </Button>
           )}
