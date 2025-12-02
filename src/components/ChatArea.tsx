@@ -93,13 +93,13 @@ const ChatArea = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder='Try: "Create an invoice for ₦50,000 to Adamu Musa for web design services"'
-                className="min-h-[56px] max-h-[200px] pr-14 resize-none bg-background border-border focus-visible:ring-primary rounded-2xl text-base shadow-lg py-4"
+                className="min-h-[52px] max-h-[200px] pr-14 resize-none bg-background border-border focus-visible:ring-primary rounded-full text-base shadow-lg py-3 pl-5"
               />
               <Button
                 type="submit"
                 size="icon"
                 disabled={!input.trim()}
-                className="absolute right-3 bottom-3 h-10 w-10 rounded-xl bg-primary hover:bg-primary/90 disabled:opacity-50 transition-all duration-200"
+                className="absolute right-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-primary hover:bg-primary/90 disabled:opacity-50 transition-all duration-200"
               >
                 <Send className="h-4 w-4" />
               </Button>
