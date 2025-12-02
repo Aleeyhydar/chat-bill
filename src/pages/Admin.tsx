@@ -7,6 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
+import { invoiceTemplates } from "@/data/templates";
 
 // Mock data
 const mockUsers = [
@@ -14,13 +15,6 @@ const mockUsers = [
   { id: 2, name: "Jane Smith", email: "jane@example.com", status: "active", invoiceCount: 45, plan: "Business" },
   { id: 3, name: "Bob Johnson", email: "bob@example.com", status: "inactive", invoiceCount: 8, plan: "Free" },
   { id: 4, name: "Alice Williams", email: "alice@example.com", status: "active", invoiceCount: 67, plan: "Pro" },
-];
-
-const mockTemplates = [
-  { id: 1, name: "Professional Classic", enabled: true, usageCount: 234 },
-  { id: 2, name: "Modern Minimal", enabled: true, usageCount: 189 },
-  { id: 3, name: "Bold Creative", enabled: false, usageCount: 56 },
-  { id: 4, name: "Elegant Corporate", enabled: true, usageCount: 312 },
 ];
 
 // Mock chart data
@@ -89,12 +83,9 @@ const subscriptionDistributionData = [
   { name: "Business", value: 97, color: "hsl(var(--accent))" },
 ];
 
-const templateUsageData = [
-  { name: "Elegant Corporate", usage: 312 },
-  { name: "Professional Classic", usage: 234 },
-  { name: "Modern Minimal", usage: 189 },
-  { name: "Bold Creative", usage: 56 },
-];
+const templateUsageData = invoiceTemplates
+  .map(t => ({ name: t.name, usage: t.usageCount }))
+  .sort((a, b) => b.usage - a.usage);
 
 const navItems = [
   { id: "users", label: "User Management", icon: Users },
@@ -330,14 +321,15 @@ export default function Admin() {
             </div>
             
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {mockTemplates.map((template) => (
+              {invoiceTemplates.map((template) => (
                 <Card key={template.id}>
                   <CardHeader>
                     <div className="h-32 bg-muted rounded-lg mb-4 flex items-center justify-center">
                       <p className="text-muted-foreground text-sm">Template Preview</p>
                     </div>
                     <CardTitle className="text-lg">{template.name}</CardTitle>
-                    <CardDescription>{template.usageCount} times used</CardDescription>
+                    <CardDescription>{template.preview}</CardDescription>
+                    <p className="text-xs text-muted-foreground mt-1">{template.usageCount} times used</p>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-between">
@@ -622,7 +614,7 @@ export default function Admin() {
                     </ResponsiveContainer>
                   </ChartContainer>
                   <div className="mt-4 space-y-2">
-                    {mockTemplates.slice(0, 3).map((template) => (
+                    {invoiceTemplates.slice(0, 3).map((template) => (
                       <div key={template.id} className="flex justify-between text-sm">
                         <span className="text-muted-foreground">{template.name}</span>
                         <span className="font-medium">{template.usageCount}</span>
