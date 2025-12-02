@@ -1,4 +1,4 @@
-import { Send, Sparkles, FileText, DollarSign, Zap, Clock } from "lucide-react";
+import { Send, FileText, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
@@ -81,28 +81,19 @@ const ChatArea = () => {
       
       {messages.length === 0 ? (
         /* Welcome Screen - ChatGPT Style */
-        <div className="flex-1 flex flex-col items-center px-4 py-8 relative z-10 overflow-y-auto">
-          <div className="w-full max-w-4xl space-y-6 my-auto">
-            <div className="text-center space-y-4 mb-8">
-              <div className="relative inline-block">
-                <Sparkles className="h-16 w-16 text-primary mx-auto mb-6 animate-pulse" />
-                <div className="absolute -top-1 -right-1 h-3 w-3 bg-accent rounded-full animate-ping" />
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-                Welcome to InvoiceAI
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Create professional invoices in seconds with AI. Just describe what you need.
-              </p>
-            </div>
+        <div className="flex-1 flex flex-col items-center justify-center px-4 relative z-10">
+          <div className="w-full max-w-2xl space-y-8">
+            <h1 className="text-4xl md:text-5xl font-semibold text-foreground text-center">
+              Welcome to InvoiceAI
+            </h1>
 
-            <form onSubmit={handleSubmit} className="relative mb-8">
+            <form onSubmit={handleSubmit} className="relative">
               <Textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder='Try: "Create an invoice for ₦50,000 to Adamu Musa for web design services"'
-                className="min-h-[80px] max-h-[200px] pr-12 resize-none bg-background border-border focus-visible:ring-primary rounded-2xl text-base shadow-lg"
+                className="min-h-[56px] max-h-[200px] pr-14 resize-none bg-background border-border focus-visible:ring-primary rounded-2xl text-base shadow-lg py-4"
               />
               <Button
                 type="submit"
@@ -113,28 +104,6 @@ const ChatArea = () => {
                 <Send className="h-4 w-4" />
               </Button>
             </form>
-            <p className="text-xs text-muted-foreground text-center mb-8">
-              Press Enter to send, Shift + Enter for new line
-            </p>
-
-            {/* Feature Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 hover:bg-card/70 transition-all duration-300 hover:scale-105">
-                <Zap className="h-8 w-8 text-primary mb-2" />
-                <h3 className="font-semibold text-foreground mb-1">Lightning Fast</h3>
-                <p className="text-sm text-muted-foreground">Generate invoices in seconds with AI</p>
-              </div>
-              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 hover:bg-card/70 transition-all duration-300 hover:scale-105">
-                <FileText className="h-8 w-8 text-accent mb-2" />
-                <h3 className="font-semibold text-foreground mb-1">Professional</h3>
-                <p className="text-sm text-muted-foreground">Beautiful, ready-to-send formats</p>
-              </div>
-              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-4 hover:bg-card/70 transition-all duration-300 hover:scale-105">
-                <Clock className="h-8 w-8 text-primary mb-2" />
-                <h3 className="font-semibold text-foreground mb-1">Smart Tracking</h3>
-                <p className="text-sm text-muted-foreground">Keep track of all your invoices</p>
-              </div>
-            </div>
           </div>
         </div>
       ) : (
