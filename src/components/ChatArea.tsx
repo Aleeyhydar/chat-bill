@@ -1,4 +1,4 @@
-import { Send, FileText, DollarSign } from "lucide-react";
+import { Send, FileText, DollarSign, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
@@ -94,9 +94,12 @@ const ChatArea = ({ onClearChat }: ChatAreaProps) => {
         /* Welcome Screen - ChatGPT Style */
         <div className="flex-1 flex flex-col items-center justify-center px-4 relative z-10">
           <div className="w-full max-w-2xl space-y-8">
-            <h1 className="text-4xl md:text-5xl font-semibold text-foreground text-center">
-              Welcome to InvoiceAI
-            </h1>
+            <div className="flex flex-col items-center gap-4">
+              <Sparkles className="h-12 w-12 text-primary" />
+              <h1 className="text-4xl md:text-5xl font-semibold text-foreground text-center">
+                Welcome to InvoiceAI
+              </h1>
+            </div>
 
             <form onSubmit={handleSubmit} className="relative">
               <Textarea
