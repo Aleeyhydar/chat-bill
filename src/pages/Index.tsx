@@ -22,7 +22,14 @@ const Index = () => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
+        {/* Desktop Header - shown when sidebar is collapsed */}
+        {!sidebarOpen && (
+          <header className="hidden lg:flex items-center justify-end px-4 py-3 border-b border-border bg-background">
+            <span className="text-sm font-semibold text-foreground">InvoiceAI</span>
+          </header>
+        )}
+
+        {/* Mobile Header */}
         <header className="flex items-center justify-between p-4 border-b border-border bg-background lg:hidden">
           {!sidebarOpen && (
             <Button
