@@ -1,4 +1,4 @@
-import { Search, FileText, Plus, Menu, X, ChevronLeft, User, CreditCard, Settings, LogOut } from "lucide-react";
+import { Search, FileText, Plus, ChevronLeft, ChevronRight, User, CreditCard, Settings, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -11,6 +11,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -44,7 +50,7 @@ const InvoiceSidebar = ({ isOpen, onToggle, onNewInvoice }: InvoiceSidebarProps)
   );
 
   return (
-    <>
+    <TooltipProvider delayDuration={0}>
       {/* Mobile overlay */}
       {isOpen && (
         <div
@@ -53,14 +59,127 @@ const InvoiceSidebar = ({ isOpen, onToggle, onNewInvoice }: InvoiceSidebarProps)
         />
       )}
 
-      {/* Sidebar */}
+      {/* Mini Sidebar - shown when collapsed */}
+      {!isOpen && (
+        <aside className="hidden lg:flex fixed lg:sticky top-0 left-0 h-screen w-14 bg-sidebar border-r border-sidebar-border flex-col z-50">
+          {/* Expand button at top */}
+          <div className="p-2 flex justify-center">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={onToggle}
+                  className="hover:bg-sidebar-hover"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="right">
+                <p>Expand sidebar</p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
+
+          {/* New Invoice */}
+          <div className="p-2 flex justify-center">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={onNewInvoice}
+                  className="hover:bg-sidebar-hover text-primary"
+                >
+                  <Plus className="h-5 w-5" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="right">
+                <p>New Invoice</p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
+
+          {/* Search */}
+          <div className="p-2 flex justify-center">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={onToggle}
+                  className="hover:bg-sidebar-hover"
+                >
+                  <Search className="h-5 w-5" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="right">
+                <p>Search invoices</p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
+
+          {/* Spacer */}
+          <div className="flex-1" />
+
+          {/* Profile at bottom */}
+          <div className="p-2 flex justify-center border-t border-sidebar-border">
+            <DropdownMenu>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="hover:bg-sidebar-hover"
+                    >
+                      <Avatar className="h-8 w-8 border-2 border-primary/20">
+                        <AvatarImage src="" alt="User" />
+                        <AvatarFallback className="bg-primary/10 text-primary font-semibold text-xs">
+                          JD
+                        </AvatarFallback>
+                      </Avatar>
+                    </Button>
+                  </DropdownMenuTrigger>
+                </TooltipTrigger>
+                <TooltipContent side="right">
+                  <p>Profile</p>
+                </TooltipContent>
+              </Tooltip>
+              <DropdownMenuContent align="end" side="right" className="w-56">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => navigate("/edit-profile")}>
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Edit Profile</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate("/plans")}>
+                  <CreditCard className="mr-2 h-4 w-4" />
+                  <span>View Plans</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate("/settings")}>
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Settings</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="text-destructive" onClick={() => navigate("/signin")}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log Out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        </aside>
+      )}
+
+      {/* Full Sidebar */}
       <aside
         className={`
           fixed lg:sticky top-0 left-0 h-screen
           bg-sidebar border-r border-sidebar-border
           flex flex-col z-50
           transition-all duration-300 ease-in-out
-          ${isOpen ? "translate-x-0 w-72" : "-translate-x-full w-0 overflow-hidden"}
+          ${isOpen ? "translate-x-0 w-72" : "-translate-x-full w-0 overflow-hidden lg:hidden"}
         `}
       >
         {/* Header */}
@@ -172,7 +291,7 @@ const InvoiceSidebar = ({ isOpen, onToggle, onNewInvoice }: InvoiceSidebarProps)
           </DropdownMenu>
         </div>
       </aside>
-    </>
+    </TooltipProvider>
   );
 };
 

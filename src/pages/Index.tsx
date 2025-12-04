@@ -23,7 +23,7 @@ const Index = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="flex items-center justify-between p-4 border-b border-border bg-background">
+        <header className="flex items-center justify-between p-4 border-b border-border bg-background lg:hidden">
           {!sidebarOpen && (
             <Button
               variant="ghost"
@@ -40,8 +40,8 @@ const Index = () => {
               )}
             </Button>
           )}
-          <h1 className="text-lg font-semibold text-foreground lg:hidden">InvoiceAI</h1>
-          {!sidebarOpen && <div className="w-10 lg:hidden" />}
+          <h1 className="text-lg font-semibold text-foreground">InvoiceAI</h1>
+          {!sidebarOpen && <div className="w-10" />}
         </header>
 
         {/* Chat Area */}
