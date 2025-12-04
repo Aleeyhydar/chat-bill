@@ -1,4 +1,4 @@
-import { Search, FileText, Plus, ChevronLeft, User, CreditCard, Settings, LogOut } from "lucide-react";
+import { Search, FileText, Plus, ChevronLeft, User, CreditCard, Settings, LogOut, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -72,7 +72,7 @@ const InvoiceSidebar = ({ isOpen, onToggle, onNewInvoice }: InvoiceSidebarProps)
                   onClick={onToggle}
                   className="hover:bg-sidebar-hover"
                 >
-                  <FileText className="h-6 w-6 text-primary" />
+                  <Sparkles className="h-6 w-6 text-primary" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent side="right">
@@ -185,7 +185,7 @@ const InvoiceSidebar = ({ isOpen, onToggle, onNewInvoice }: InvoiceSidebarProps)
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-sidebar-border">
           <div className="flex items-center gap-2">
-            <FileText className="h-6 w-6 text-primary" />
+            <Sparkles className="h-6 w-6 text-primary" />
             <span className="font-semibold text-lg text-sidebar-foreground">InvoiceAI</span>
           </div>
           <Button
