@@ -1,4 +1,4 @@
-import { Search, FileText, Plus, ChevronLeft, ChevronRight, User, CreditCard, Settings, LogOut } from "lucide-react";
+import { Search, FileText, Plus, ChevronLeft, User, CreditCard, Settings, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -62,8 +62,8 @@ const InvoiceSidebar = ({ isOpen, onToggle, onNewInvoice }: InvoiceSidebarProps)
       {/* Mini Sidebar - shown when collapsed */}
       {!isOpen && (
         <aside className="hidden lg:flex fixed lg:sticky top-0 left-0 h-screen w-14 bg-sidebar border-r border-sidebar-border flex-col z-50">
-          {/* Expand button at top */}
-          <div className="p-2 flex justify-center">
+          {/* Logo / Expand button at top */}
+          <div className="p-2 flex justify-center border-b border-sidebar-border">
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
@@ -72,7 +72,7 @@ const InvoiceSidebar = ({ isOpen, onToggle, onNewInvoice }: InvoiceSidebarProps)
                   onClick={onToggle}
                   className="hover:bg-sidebar-hover"
                 >
-                  <ChevronRight className="h-5 w-5" />
+                  <FileText className="h-6 w-6 text-primary" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent side="right">
