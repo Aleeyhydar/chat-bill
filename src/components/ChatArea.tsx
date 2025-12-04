@@ -11,9 +11,20 @@ interface Message {
   timestamp: Date;
 }
 
-const ChatArea = () => {
+interface ChatAreaProps {
+  onClearChat?: (clearFn: () => void) => void;
+}
+
+const ChatArea = ({ onClearChat }: ChatAreaProps) => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
+
+  // Expose clear function to parent
+  useState(() => {
+    if (onClearChat) {
+      onClearChat(() => setMessages([]));
+    }
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

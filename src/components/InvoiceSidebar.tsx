@@ -24,9 +24,10 @@ interface Invoice {
 interface InvoiceSidebarProps {
   isOpen: boolean;
   onToggle: () => void;
+  onNewInvoice?: () => void;
 }
 
-const InvoiceSidebar = ({ isOpen, onToggle }: InvoiceSidebarProps) => {
+const InvoiceSidebar = ({ isOpen, onToggle, onNewInvoice }: InvoiceSidebarProps) => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -80,7 +81,10 @@ const InvoiceSidebar = ({ isOpen, onToggle }: InvoiceSidebarProps) => {
 
         {/* New Invoice Button */}
         <div className="p-4">
-          <Button className="w-full justify-start gap-2 bg-primary hover:bg-primary/90 text-primary-foreground">
+          <Button 
+            onClick={onNewInvoice}
+            className="w-full justify-start gap-2 bg-primary hover:bg-primary/90 text-primary-foreground"
+          >
             <Plus className="h-4 w-4" />
             New Invoice
           </Button>
