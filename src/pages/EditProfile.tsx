@@ -357,35 +357,98 @@ const EditProfile = () => {
                           </div>
                         )}
                         {template.id === 3 && (
-                          <div className="space-y-2 text-[4px]">
-                            <div className="bg-gradient-to-r from-primary/30 to-primary/10 p-2 rounded-t space-y-1">
-                              <div className="w-12 h-2 bg-primary rounded" />
-                              <div className="w-8 h-1 bg-primary/50 rounded" />
-                            </div>
-                            <div className="px-1 space-y-2">
-                              <div className="flex gap-2">
-                                <div className="flex-1 space-y-1">
-                                  <div className="w-full h-1 bg-muted rounded" />
-                                  <div className="w-3/4 h-1 bg-muted rounded" />
+                          <div className="w-full h-full overflow-hidden">
+                            <div style={{ 
+                              transform: 'scale(0.35)', 
+                              transformOrigin: 'top left', 
+                              width: '285%',
+                              '--user-primary-color': selectedColor && selectedColor !== 0 ? colorCombinations.find(c => c.id === selectedColor)?.primary : customPrimaryColor,
+                              '--user-secondary-color': selectedColor && selectedColor !== 0 ? colorCombinations.find(c => c.id === selectedColor)?.secondary : customSecondaryColor,
+                              '--user-bg-color': '#ffffff',
+                              '--user-text-color': '#222222',
+                              '--user-border-color': '#e5e5e5',
+                            } as React.CSSProperties}>
+                              {/* Bold Invoice Container */}
+                              <div style={{ 
+                                maxWidth: '850px', 
+                                margin: 'auto', 
+                                background: 'var(--user-bg-color)', 
+                                border: '1px solid var(--user-border-color)', 
+                                borderRadius: '12px', 
+                                overflow: 'hidden', 
+                                fontFamily: '"Inter", sans-serif',
+                                paddingBottom: '30px'
+                              }}>
+                                {/* Header Banner */}
+                                <div style={{ 
+                                  background: 'var(--user-primary-color)', 
+                                  color: '#fff', 
+                                  padding: '25px', 
+                                  display: 'flex', 
+                                  justifyContent: 'space-between', 
+                                  alignItems: 'flex-start' 
+                                }}>
+                                  <div style={{ display: 'flex', gap: '12px' }}>
+                                    <div style={{ width: '55px', height: '55px', background: 'rgba(255,255,255,0.25)', borderRadius: '8px' }}></div>
+                                    <div>
+                                      <h1 style={{ margin: 0, fontSize: '20px', fontWeight: 700 }}>Company Name</h1>
+                                      <p style={{ margin: '2px 0', fontSize: '11px' }}>123 Main Street, City</p>
+                                      <p style={{ margin: '2px 0', fontSize: '11px' }}>email@example.com</p>
+                                      <p style={{ margin: '2px 0', fontSize: '11px' }}>+123 456 7890</p>
+                                    </div>
+                                  </div>
+                                  <div style={{ textAlign: 'right' }}>
+                                    <h2 style={{ margin: '0 0 8px 0', fontSize: '22px', fontWeight: 800 }}>INVOICE</h2>
+                                    <p style={{ margin: '2px 0', fontSize: '11px' }}><strong>Invoice #:</strong> INV-001</p>
+                                    <p style={{ margin: '2px 0', fontSize: '11px' }}><strong>Date:</strong> 2025-01-01</p>
+                                    <p style={{ margin: '2px 0', fontSize: '11px' }}><strong>Due:</strong> On Receipt</p>
+                                  </div>
                                 </div>
-                                <div className="flex-1 space-y-1">
-                                  <div className="w-full h-1 bg-muted rounded" />
-                                  <div className="w-3/4 h-1 bg-muted rounded" />
+
+                                {/* Bill To Section */}
+                                <div style={{ margin: '20px 25px' }}>
+                                  <h3 style={{ fontWeight: 800, fontSize: '14px', marginBottom: '8px', color: 'var(--user-primary-color)', marginTop: 0 }}>Bill To</h3>
+                                  <p style={{ margin: '2px 0', fontSize: '11px' }}>Client Name</p>
+                                  <p style={{ margin: '2px 0', fontSize: '11px' }}>Client Contact</p>
                                 </div>
-                              </div>
-                              <div className="bg-primary/5 rounded p-1.5 space-y-1">
-                                <div className="flex justify-between">
-                                  <div className="w-10 h-1 bg-primary/50 rounded" />
-                                  <div className="w-6 h-1 bg-primary/50 rounded" />
+
+                                {/* Table */}
+                                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                                  <thead>
+                                    <tr>
+                                      <th style={{ background: 'var(--user-secondary-color)', color: '#fff', padding: '10px', fontSize: '11px', textAlign: 'left' }}>Description</th>
+                                      <th style={{ background: 'var(--user-secondary-color)', color: '#fff', padding: '10px', fontSize: '11px', textAlign: 'left' }}>Rate</th>
+                                      <th style={{ background: 'var(--user-secondary-color)', color: '#fff', padding: '10px', fontSize: '11px', textAlign: 'left' }}>Qty</th>
+                                      <th style={{ background: 'var(--user-secondary-color)', color: '#fff', padding: '10px', fontSize: '11px', textAlign: 'left' }}>Total</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td style={{ padding: '10px', borderBottom: '1px solid var(--user-border-color)', fontSize: '11px' }}>Example Service</td>
+                                      <td style={{ padding: '10px', borderBottom: '1px solid var(--user-border-color)', fontSize: '11px' }}>₦100</td>
+                                      <td style={{ padding: '10px', borderBottom: '1px solid var(--user-border-color)', fontSize: '11px' }}>1</td>
+                                      <td style={{ padding: '10px', borderBottom: '1px solid var(--user-border-color)', fontSize: '11px' }}>₦100</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+
+                                {/* Summary */}
+                                <div style={{ margin: '20px 25px', textAlign: 'right' }}>
+                                  <p style={{ margin: '6px 0', fontSize: '11px' }}><strong>Subtotal:</strong> ₦100</p>
+                                  <p style={{ margin: '6px 0', fontSize: '11px' }}><strong>Discount:</strong> ₦0</p>
+                                  <p style={{ margin: '6px 0', fontSize: '16px', fontWeight: 800, color: 'var(--user-primary-color)' }}><strong>Total:</strong> ₦100</p>
+                                  <p style={{ margin: '6px 0', fontSize: '13px', fontWeight: 700 }}><strong>Balance Due:</strong> ₦0</p>
                                 </div>
-                                <div className="flex justify-between">
-                                  <div className="w-12 h-1 bg-muted rounded" />
-                                  <div className="w-6 h-1 bg-muted rounded" />
+
+                                {/* Payment Section */}
+                                <div style={{ margin: '20px 25px' }}>
+                                  <h3 style={{ fontWeight: 800, fontSize: '14px', marginBottom: '8px', color: 'var(--user-primary-color)', marginTop: 0 }}>Payment Information</h3>
+                                  <p style={{ margin: 0, fontSize: '11px' }}>Bank Name — Account Number — Account Name</p>
                                 </div>
-                              </div>
-                              <div className="flex justify-end">
-                                <div className="bg-primary/20 px-2 py-1 rounded">
-                                  <div className="w-8 h-1 bg-primary rounded" />
+
+                                {/* Footer */}
+                                <div style={{ textAlign: 'center', paddingTop: '15px', color: 'var(--user-secondary-color)', fontSize: '11px' }}>
+                                  <p style={{ margin: 0 }}>Thank you for your business!</p>
                                 </div>
                               </div>
                             </div>
