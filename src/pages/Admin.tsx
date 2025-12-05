@@ -324,8 +324,92 @@ export default function Admin() {
               {invoiceTemplates.map((template) => (
                 <Card key={template.id}>
                   <CardHeader>
-                    <div className="h-32 bg-muted rounded-lg mb-4 flex items-center justify-center">
-                      <p className="text-muted-foreground text-sm">Template Preview</p>
+                    <div className="h-40 bg-muted rounded-lg mb-4 overflow-hidden border border-border">
+                      {template.name === "Modern Minimal" && (
+                        <div className="h-full p-3 bg-background">
+                          <div className="flex justify-between items-start mb-3">
+                            <div className="w-8 h-8 rounded bg-primary/20" />
+                            <div className="text-right">
+                              <div className="h-2 w-12 bg-primary rounded mb-1" />
+                              <div className="h-1.5 w-8 bg-muted-foreground/30 rounded" />
+                            </div>
+                          </div>
+                          <div className="space-y-2">
+                            <div className="h-1.5 w-full bg-muted-foreground/20 rounded" />
+                            <div className="h-1.5 w-3/4 bg-muted-foreground/20 rounded" />
+                          </div>
+                          <div className="mt-3 pt-2 border-t border-border">
+                            <div className="h-1.5 w-1/2 bg-primary/40 rounded" />
+                          </div>
+                        </div>
+                      )}
+                      {template.name === "Professional Classic" && (
+                        <div className="h-full p-3 bg-background">
+                          <div className="border-b-2 border-primary pb-2 mb-3">
+                            <div className="h-3 w-20 bg-primary rounded mb-1" />
+                            <div className="h-1.5 w-16 bg-muted-foreground/30 rounded" />
+                          </div>
+                          <div className="grid grid-cols-2 gap-2 mb-2">
+                            <div className="space-y-1">
+                              <div className="h-1 w-8 bg-muted-foreground/40 rounded" />
+                              <div className="h-1.5 w-12 bg-muted-foreground/20 rounded" />
+                            </div>
+                            <div className="space-y-1">
+                              <div className="h-1 w-8 bg-muted-foreground/40 rounded" />
+                              <div className="h-1.5 w-12 bg-muted-foreground/20 rounded" />
+                            </div>
+                          </div>
+                          <div className="bg-muted/50 p-1 rounded">
+                            <div className="h-1 w-full bg-muted-foreground/30 rounded mb-1" />
+                            <div className="h-1 w-full bg-muted-foreground/30 rounded" />
+                          </div>
+                        </div>
+                      )}
+                      {template.name === "Bold & Colorful" && (
+                        <div className="h-full bg-gradient-to-br from-orange-500/20 to-pink-500/20 p-3">
+                          <div className="bg-gradient-to-r from-orange-500 to-pink-500 h-6 rounded-lg mb-3 flex items-center px-2">
+                            <div className="h-2 w-12 bg-white/80 rounded" />
+                          </div>
+                          <div className="space-y-2">
+                            <div className="h-2 w-full bg-orange-400/40 rounded" />
+                            <div className="h-2 w-3/4 bg-pink-400/40 rounded" />
+                          </div>
+                          <div className="mt-3 flex gap-2">
+                            <div className="h-4 w-12 bg-orange-500/60 rounded" />
+                            <div className="h-4 w-12 bg-pink-500/60 rounded" />
+                          </div>
+                        </div>
+                      )}
+                      {template.name === "Elegant Corporate" && (
+                        <div className="h-full p-3 bg-slate-900">
+                          <div className="flex justify-between items-center mb-3">
+                            <div className="h-4 w-4 border-2 border-amber-400/60 rounded-sm" />
+                            <div className="h-2 w-16 bg-amber-400/40 rounded" />
+                          </div>
+                          <div className="border-l-2 border-amber-400/60 pl-2 space-y-1.5 mb-3">
+                            <div className="h-1.5 w-full bg-slate-600 rounded" />
+                            <div className="h-1.5 w-2/3 bg-slate-600 rounded" />
+                          </div>
+                          <div className="flex justify-end">
+                            <div className="h-3 w-14 bg-amber-400/30 rounded" />
+                          </div>
+                        </div>
+                      )}
+                      {template.name === "Creative Studio" && (
+                        <div className="h-full p-3 bg-gradient-to-br from-violet-100 to-cyan-100 dark:from-violet-900/30 dark:to-cyan-900/30">
+                          <div className="flex gap-2 mb-3">
+                            <div className="w-6 h-6 rounded-full bg-violet-500/40" />
+                            <div className="w-6 h-6 rounded-full bg-cyan-500/40 -ml-3" />
+                          </div>
+                          <div className="transform -rotate-1 bg-background/80 p-2 rounded shadow-sm">
+                            <div className="h-1.5 w-full bg-violet-400/40 rounded mb-1" />
+                            <div className="h-1.5 w-2/3 bg-cyan-400/40 rounded" />
+                          </div>
+                          <div className="mt-2 flex justify-end">
+                            <div className="h-3 w-10 bg-violet-500/50 rounded-full" />
+                          </div>
+                        </div>
+                      )}
                     </div>
                     <CardTitle className="text-lg">{template.name}</CardTitle>
                     <CardDescription>{template.preview}</CardDescription>
