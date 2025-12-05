@@ -257,90 +257,101 @@ const EditProfile = () => {
                         {template.id === 2 && (
                           <div className="w-full h-full overflow-hidden">
                             <div style={{ 
-                              transform: 'scale(0.37)', 
+                              transform: 'scale(0.32)', 
                               transformOrigin: 'top left', 
-                              width: '270%',
+                              width: '310%',
                               '--user-primary-color': selectedColor && selectedColor !== 0 ? colorCombinations.find(c => c.id === selectedColor)?.primary : customPrimaryColor,
                               '--user-secondary-color': selectedColor && selectedColor !== 0 ? colorCombinations.find(c => c.id === selectedColor)?.secondary : customSecondaryColor,
                               '--user-bg-color': '#ffffff',
-                              '--user-text-color': '#333333',
+                              '--user-text-color': '#222222',
                               '--user-border-color': '#dddddd',
                             } as React.CSSProperties}>
+                              {/* Classic Wrapper */}
                               <div style={{ 
+                                display: 'flex', 
+                                maxWidth: '1000px', 
+                                margin: 'auto', 
+                                border: '1px solid var(--user-border-color)', 
+                                borderRadius: '10px', 
+                                overflow: 'hidden', 
                                 background: 'var(--user-bg-color)', 
-                                color: 'var(--user-text-color)', 
-                                padding: '40px',
-                                maxWidth: '850px',
-                                margin: 'auto',
-                                border: '1px solid var(--user-border-color)',
-                                borderRadius: '10px',
-                                fontFamily: '"Georgia", serif'
+                                fontFamily: '"Georgia", serif' 
                               }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '2px solid var(--user-border-color)', paddingBottom: '25px', marginBottom: '30px' }}>
-                                  <div style={{ display: 'flex', gap: '15px' }}>
-                                    <div style={{ width: '70px', height: '70px', background: 'var(--user-border-color)', borderRadius: '6px' }}></div>
-                                    <div>
-                                      <h1 style={{ margin: 0, fontSize: '24px', color: 'var(--user-primary-color)' }}>Company Name</h1>
-                                      <p style={{ margin: '2px 0', fontSize: '14px' }}>123 Business Avenue, City</p>
-                                      <p style={{ margin: '2px 0', fontSize: '14px' }}>email@example.com</p>
-                                      <p style={{ margin: '2px 0', fontSize: '14px' }}>+123 456 7890</p>
-                                    </div>
+                                {/* Left Sidebar */}
+                                <aside style={{ 
+                                  width: '220px', 
+                                  background: 'var(--user-primary-color)', 
+                                  color: '#fff', 
+                                  padding: '25px 20px', 
+                                  display: 'flex', 
+                                  flexDirection: 'column', 
+                                  gap: '30px' 
+                                }}>
+                                  <div>
+                                    <div style={{ width: '55px', height: '55px', background: 'rgba(255,255,255,0.2)', borderRadius: '6px', marginBottom: '12px' }}></div>
+                                    <h2 style={{ margin: 0, fontSize: '16px', marginBottom: '4px' }}>Company Name</h2>
+                                    <p style={{ margin: '2px 0', fontSize: '11px', opacity: 0.9 }}>123 Business Avenue</p>
+                                    <p style={{ margin: '2px 0', fontSize: '11px', opacity: 0.9 }}>email@example.com</p>
+                                    <p style={{ margin: '2px 0', fontSize: '11px', opacity: 0.9 }}>+123 456 7890</p>
                                   </div>
                                   <div>
-                                    <table style={{ fontSize: '14px' }}>
-                                      <tbody>
-                                        <tr><td style={{ padding: '3px 8px' }}>Invoice #:</td><td style={{ padding: '3px 8px' }}>INV-001</td></tr>
-                                        <tr><td style={{ padding: '3px 8px' }}>Date:</td><td style={{ padding: '3px 8px' }}>2025-01-01</td></tr>
-                                        <tr><td style={{ padding: '3px 8px' }}>Due:</td><td style={{ padding: '3px 8px' }}>On Receipt</td></tr>
-                                        <tr><td style={{ padding: '3px 8px' }}>Balance Due:</td><td style={{ padding: '3px 8px', fontWeight: 'bold', color: 'var(--user-primary-color)' }}>₦0</td></tr>
-                                      </tbody>
-                                    </table>
+                                    <h3 style={{ margin: 0, marginBottom: '6px', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>Payment Info</h3>
+                                    <p style={{ margin: 0, fontSize: '11px', opacity: 0.9, lineHeight: 1.4 }}>Bank Name — Account No — Account Name</p>
                                   </div>
-                                </div>
+                                </aside>
 
-                                <div style={{ marginTop: '25px' }}>
-                                  <h2 style={{ fontSize: '18px', marginBottom: '10px', color: 'var(--user-primary-color)', borderBottom: '1px solid var(--user-border-color)', paddingBottom: '5px' }}>Bill To</h2>
-                                  <p style={{ margin: '2px 0', fontSize: '14px' }}>Client Name</p>
-                                  <p style={{ margin: '2px 0', fontSize: '14px' }}>Client Contact</p>
-                                </div>
+                                {/* Main Area */}
+                                <main style={{ flex: 1, padding: '30px' }}>
+                                  {/* Title Block */}
+                                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '2px solid var(--user-border-color)', paddingBottom: '15px', marginBottom: '20px' }}>
+                                    <h1 style={{ margin: 0, fontSize: '26px', color: 'var(--user-primary-color)' }}>INVOICE</h1>
+                                    <div style={{ fontSize: '12px' }}>
+                                      <p style={{ margin: '2px 0' }}><strong>Invoice #:</strong> INV-001</p>
+                                      <p style={{ margin: '2px 0' }}><strong>Date:</strong> 2025-01-01</p>
+                                      <p style={{ margin: '2px 0' }}><strong>Due:</strong> On Receipt</p>
+                                    </div>
+                                  </div>
 
-                                <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
-                                  <thead>
-                                    <tr>
-                                      <th style={{ background: 'var(--user-primary-color)', color: '#fff', padding: '12px', fontSize: '14px', textAlign: 'left' }}>Description</th>
-                                      <th style={{ background: 'var(--user-primary-color)', color: '#fff', padding: '12px', fontSize: '14px', textAlign: 'left' }}>Rate</th>
-                                      <th style={{ background: 'var(--user-primary-color)', color: '#fff', padding: '12px', fontSize: '14px', textAlign: 'left' }}>Qty</th>
-                                      <th style={{ background: 'var(--user-primary-color)', color: '#fff', padding: '12px', fontSize: '14px', textAlign: 'left' }}>Total</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td style={{ padding: '12px', borderBottom: '1px solid var(--user-border-color)', fontSize: '14px' }}>Example Service</td>
-                                      <td style={{ padding: '12px', borderBottom: '1px solid var(--user-border-color)', fontSize: '14px' }}>₦100</td>
-                                      <td style={{ padding: '12px', borderBottom: '1px solid var(--user-border-color)', fontSize: '14px' }}>1</td>
-                                      <td style={{ padding: '12px', borderBottom: '1px solid var(--user-border-color)', fontSize: '14px' }}>₦100</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                                  {/* Bill To Section */}
+                                  <section style={{ marginBottom: '20px' }}>
+                                    <h2 style={{ fontSize: '14px', borderBottom: '1px solid var(--user-border-color)', paddingBottom: '4px', color: 'var(--user-primary-color)', marginBottom: '6px', marginTop: 0 }}>Bill To</h2>
+                                    <p style={{ margin: '2px 0', fontSize: '12px' }}>Client Name</p>
+                                    <p style={{ margin: '2px 0', fontSize: '12px' }}>Client Contact</p>
+                                  </section>
 
-                                <div style={{ marginTop: '25px', width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
-                                  <table style={{ width: '300px' }}>
+                                  {/* Table */}
+                                  <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '20px' }}>
+                                    <thead>
+                                      <tr>
+                                        <th style={{ background: 'var(--user-primary-color)', color: '#fff', padding: '10px', fontSize: '11px', letterSpacing: '0.5px', textAlign: 'left' }}>Description</th>
+                                        <th style={{ background: 'var(--user-primary-color)', color: '#fff', padding: '10px', fontSize: '11px', letterSpacing: '0.5px', textAlign: 'left' }}>Rate</th>
+                                        <th style={{ background: 'var(--user-primary-color)', color: '#fff', padding: '10px', fontSize: '11px', letterSpacing: '0.5px', textAlign: 'left' }}>Qty</th>
+                                        <th style={{ background: 'var(--user-primary-color)', color: '#fff', padding: '10px', fontSize: '11px', letterSpacing: '0.5px', textAlign: 'left' }}>Total</th>
+                                      </tr>
+                                    </thead>
                                     <tbody>
-                                      <tr><td style={{ padding: '6px 0', fontSize: '14px' }}>Subtotal:</td><td style={{ padding: '6px 0', fontSize: '14px' }}>₦100</td></tr>
-                                      <tr><td style={{ padding: '6px 0', fontSize: '14px' }}>Discount:</td><td style={{ padding: '6px 0', fontSize: '14px' }}>₦0</td></tr>
-                                      <tr><td style={{ padding: '6px 0', fontSize: '14px' }}>Total:</td><td style={{ padding: '6px 0', fontSize: '18px', fontWeight: 'bold', color: 'var(--user-primary-color)' }}>₦100</td></tr>
+                                      <tr>
+                                        <td style={{ padding: '10px', borderBottom: '1px solid var(--user-border-color)', fontSize: '11px' }}>Example Service</td>
+                                        <td style={{ padding: '10px', borderBottom: '1px solid var(--user-border-color)', fontSize: '11px' }}>₦100</td>
+                                        <td style={{ padding: '10px', borderBottom: '1px solid var(--user-border-color)', fontSize: '11px' }}>1</td>
+                                        <td style={{ padding: '10px', borderBottom: '1px solid var(--user-border-color)', fontSize: '11px' }}>₦100</td>
+                                      </tr>
                                     </tbody>
                                   </table>
-                                </div>
 
-                                <div style={{ marginTop: '25px' }}>
-                                  <h2 style={{ fontSize: '18px', marginBottom: '10px', color: 'var(--user-primary-color)', borderBottom: '1px solid var(--user-border-color)', paddingBottom: '5px' }}>Payment Information</h2>
-                                  <p style={{ margin: '2px 0', fontSize: '14px' }}>Bank Name — Account Number — Account Name</p>
-                                </div>
+                                  {/* Summary */}
+                                  <div style={{ width: '100%', maxWidth: '280px', marginLeft: 'auto', fontSize: '11px' }}>
+                                    <p style={{ display: 'flex', justifyContent: 'space-between', margin: '4px 0' }}><span>Subtotal:</span> <span>₦100</span></p>
+                                    <p style={{ display: 'flex', justifyContent: 'space-between', margin: '4px 0' }}><span>Discount:</span> <span>₦0</span></p>
+                                    <p style={{ display: 'flex', justifyContent: 'space-between', margin: '4px 0', fontSize: '14px', color: 'var(--user-primary-color)', fontWeight: 'bold' }}><span>Total:</span> <span>₦100</span></p>
+                                    <p style={{ display: 'flex', justifyContent: 'space-between', margin: '8px 0 0 0', fontWeight: 'bold', color: 'var(--user-primary-color)' }}><span>Balance Due:</span> <span>₦0</span></p>
+                                  </div>
 
-                                <p style={{ marginTop: '50px', textAlign: 'center', fontSize: '13px', color: 'var(--user-secondary-color)' }}>
-                                  Thank you for your business.
-                                </p>
+                                  {/* Footer */}
+                                  <footer style={{ textAlign: 'center', marginTop: '30px', color: 'var(--user-secondary-color)', fontSize: '10px' }}>
+                                    <p style={{ margin: 0 }}>Thank you for your business.</p>
+                                  </footer>
+                                </main>
                               </div>
                             </div>
                           </div>
